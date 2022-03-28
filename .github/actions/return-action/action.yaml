@@ -1,11 +1,13 @@
 name: 'return-action'
+
 inputs:
-  test-property:
+  test_property:
     required: false
     
 runs:
   using: "composite"
   steps:
     - shell: bash
+      id: return_info
       run: |
-      echo "set output"
+        echo "set output"
