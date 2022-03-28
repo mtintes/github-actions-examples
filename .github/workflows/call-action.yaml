@@ -2,7 +2,6 @@ name: Call-Action
 
 on:
   workflow_dispatch:
-    inputs:
       
 
 jobs:
@@ -10,6 +9,7 @@ jobs:
     name: Call Action
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v2
       - uses: ./.github/actions/return-action
         with:
           test_property: "some test value"
