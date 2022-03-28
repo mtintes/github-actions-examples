@@ -10,16 +10,11 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
-      - uses: ./.github/actions/return-action
+      - id: action_id
+        uses: ./.github/actions/return-action
         with:
           test_property: "some test value"
+      - run: echo some output ${{ steps.action_id.outputs.return_info }}
           
-  finish:
-    name: Output Info
-    runs-on: ubuntu-latest
-    steps:
-      - name: test-output
-        run: |
-          echo start.outputs.return_info
       
     
