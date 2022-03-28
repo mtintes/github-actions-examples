@@ -13,4 +13,13 @@ jobs:
       - uses: ./.github/actions/return-action
         with:
           test_property: "some test value"
+          
+  finish:
+    name: Output Info
+    runs-on: ubuntu-latest
+    steps:
+      - name: test-output
+        run: |
+          echo start.outputs.return_info
+      
     
