@@ -1,0 +1,12 @@
+name: test-action
+inputs:
+  test-property:
+    required: false
+    
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      run: |
+      echo "set output"
+      echo "::set-output name=action_fruit::strawberry"
