@@ -11,3 +11,4 @@ runs:
       id: return_info
       run: |
         echo "set output"
+        echo "::set-output name=action_fruit::strawberry"
