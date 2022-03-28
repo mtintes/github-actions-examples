@@ -4,6 +4,9 @@ inputs:
   test_property:
     required: false
     
+outputs:
+  return_info: ${{ steps.return_info.outputs.action_fruit }}
+      
 runs:
   using: "composite"
   steps:
