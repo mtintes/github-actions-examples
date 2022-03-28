@@ -1,4 +1,4 @@
-name: return-action
+name: 'return-action'
 inputs:
   test-property:
     required: false
