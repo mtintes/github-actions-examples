@@ -9,4 +9,4 @@ runs:
     - shell: bash
       run: |
       echo "set output"
-      echo "::set-output name=action_fruit::strawberry"
+      #echo "::set-output name=action_fruit::strawberry"
