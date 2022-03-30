@@ -18,6 +18,7 @@ jobs:
   NoRun:
     name: Don't run
     runs-on: ubuntu-latest
+    needs: start
     if: ${{!needs.start.outputs.pass_this}}
     steps:
       - run: echo "I shouldn't run ${{needs.start.outputs.pass_this}}"
@@ -25,6 +26,7 @@ jobs:
   YesRun:
     name: Do run
     runs-on: ubuntu-latest
+    needs: start
     if: ${{needs.start.outputs.pass_this}}
     steps:
       - run: echo "I should run ${{needs.start.outputs.pass_this}}"
