@@ -3,13 +3,15 @@ name: If Condition bt Jobs
 on:
   workflow_dispatch:
       
-
+env:
+  pass_this: true
+  
 jobs:
   start:
     name: Pass to other job
     runs-on: ubuntu-latest
     outputs:
-      pass_this: true
+      pass_this: ${{env.pass_this}}
       
     steps:
       - uses: actions/checkout@v2
