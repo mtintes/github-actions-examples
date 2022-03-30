@@ -9,8 +9,7 @@ jobs:
     name: Pass to other job
     runs-on: ubuntu-latest
     outputs:
-      pass_this: 
-        value: true
+      pass_this: true
       
     steps:
       - uses: actions/checkout@v2
@@ -18,12 +17,15 @@ jobs:
   
   NoRun:
     name: Don't run
-    if: !${jobs.start.outputs.pass_this}
+    runs-on: ubuntu-latest
+    if: ${{!jobs.start.outputs.pass_this}}
     steps:
       - run: echo "I shouldn't run"
+      
   YesRun:
     name: Do run
-    if: ${jobs.start.outputs.pass_this}
+    runs-on: ubuntu-latest
+    if: ${{jobs.start.outputs.pass_this}}
     steps:
       - run: echo "I should run"
     
