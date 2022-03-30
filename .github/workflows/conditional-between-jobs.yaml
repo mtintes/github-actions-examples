@@ -1,0 +1,29 @@
+name: If Condition bt Jobs
+
+on:
+  workflow_dispatch:
+      
+
+jobs:
+  start:
+    name: Pass to other job
+    runs-on: ubuntu-latest
+    outputs:
+      pass_this: 
+        value: true
+      
+    steps:
+      - uses: actions/checkout@v2
+      - run: echo "I'm doing nothing"
+  
+  NoRun:
+    name: Don't run
+    if: !${jobs.start.outputs.pass_this}
+    steps:
+      - run: echo "I shouldn't run"
+  YesRun:
+    name: Do run
+    if: ${jobs.start.outputs.pass_this}
+    steps:
+      - run: echo "I should run"
+    
