@@ -18,14 +18,14 @@ jobs:
   NoRun:
     name: Don't run
     runs-on: ubuntu-latest
-    if: ${{!jobs.start.outputs.pass_this}}
+    if: ${{needs.jobs.start.outputs.pass_this}}
     steps:
       - run: echo "I shouldn't run"
       
   YesRun:
     name: Do run
     runs-on: ubuntu-latest
-    if: ${{jobs.start.outputs.pass_this}}
+    if: ${{needs.jobs.start.outputs.pass_this}}
     steps:
       - run: echo "I should run"
     
