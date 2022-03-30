@@ -20,12 +20,12 @@ jobs:
     runs-on: ubuntu-latest
     if: ${{!needs.start.outputs.pass_this}}
     steps:
-      - run: echo "I shouldn't run"
+      - run: echo "I shouldn't run ${{needs.start.outputs.pass_this}}"
       
   YesRun:
     name: Do run
     runs-on: ubuntu-latest
     if: ${{needs.start.outputs.pass_this}}
     steps:
-      - run: echo "I should run"
+      - run: echo "I should run ${{needs.start.outputs.pass_this}}"
     
