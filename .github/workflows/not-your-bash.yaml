@@ -1,0 +1,13 @@
+
+CUSTOMER="customer1"
+ENVIRONMENT="test"
+
+if [[ $CUSTOMER = 'customer2' ]] || [[ $CUSTOMER = 'customer1' && $ENVIRONMENT = 'dev' ]]; then
+    if [[ $CUSTOMER = 'customer1' ]]; then       
+        echo one
+    else 
+        echo two
+    fi
+else
+    echo three
+fi
