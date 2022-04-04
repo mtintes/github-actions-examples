@@ -13,11 +13,11 @@ jobs:
             - uses: actions/checkout@v2
             - run: |
                 if [[ $CUSTOMER = 'customer2' ]] || [[ $CUSTOMER = 'customer1' && $ENVIRONMENT = 'dev' ]]; then
+                     echo three
+                else
                    if [[ $CUSTOMER = 'customer1' ]]; then       
                         echo one
                     else 
                         echo two
                     fi
-                else
-                    echo three
                 fi
