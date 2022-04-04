@@ -1,13 +1,23 @@
+name: Not Your Bash
 
-CUSTOMER="customer1"
-ENVIRONMENT="test"
-
-if [[ $CUSTOMER = 'customer2' ]] || [[ $CUSTOMER = 'customer1' && $ENVIRONMENT = 'dev' ]]; then
-    if [[ $CUSTOMER = 'customer1' ]]; then       
-        echo one
-    else 
-        echo two
-    fi
-else
-    echo three
-fi
+on:
+    workflow_dispatch:
+    
+jobs:
+    job1:
+        runs-on: ubuntu-latest
+        env:
+            CUSTOMER: "customer1"
+            ENVIRONMENT: "test"
+        steps:
+            - uses: actions/checkout@v2
+            - run: |
+                if [[ $CUSTOMER = 'customer2' ]] || [[ $CUSTOMER = 'customer1' && $ENVIRONMENT = 'dev' ]]; then
+                   if [[ $CUSTOMER = 'customer1' ]]; then       
+                        echo one
+                    else 
+                        echo two
+                    fi
+                else
+                    echo three
+                fi
