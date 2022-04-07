@@ -1,0 +1,19 @@
+name: output context
+
+on:
+    workflow_dispatch:
+    
+
+jobs:
+  print-context:
+    name: Print Context
+    runs-on: ubuntu-latest
+    steps:
+      - name: Print Context
+        run: |
+          echo "Ref: ${{ github.ref }}"
+          echo "Run ID: ${{ github.run_id }}"
+          echo "Run #: ${{ github.run_number }}"
+          echo "Actor: ${{ github.actor }}"
+          echo "Event Name: ${{ github.event_name }}"
+          echo "Event Metadata: " ${{ toJSON(github.event) }}
