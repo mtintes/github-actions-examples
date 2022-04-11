@@ -1,0 +1,16 @@
+
+name: git_ref_context
+
+on:
+  release:
+    types: [published]
+  workflow_dispatch: 
+    
+jobs:
+  job1:
+    name: shows context
+    runs-on: ubuntu-latest
+    steps:
+      - name: show context
+        run: |
+          echo ${{ github.ref }}
