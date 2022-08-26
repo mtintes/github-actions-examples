@@ -9,8 +9,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - id: action_id
-        uses: mtintes/github-actions-examples/experiment@main
+      - uses: mtintes/github-actions-examples/experiment@main
       - run: echo "from workflow"
           
       
