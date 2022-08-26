@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - id: action_id
-        uses: ./.github/actions/return-action
+        uses: mtintes/github-actions-examples/action/experiment@main
       - run: echo "from workflow"
           
       
