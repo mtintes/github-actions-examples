@@ -1,0 +1,21 @@
+
+name: 'experiment'
+
+inputs:
+  test_property:
+    required: false
+    
+outputs:
+    return_info: 
+      value: ${{ steps.return_info.outputs.action_fruit }}
+      
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      id: return_info
+      run: |
+        TEST_VARIABLE="trying it out"
+        echo "set output"
+        echo "test: ${ TEST_VARIABLE }"
+        
