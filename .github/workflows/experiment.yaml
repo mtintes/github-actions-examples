@@ -1,0 +1,16 @@
+name: Call-Action
+
+on:
+  workflow_dispatch:
+      
+jobs:
+  start:
+    name: Call Action
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - id: action_id
+        uses: ./.github/actions/return-action
+      - run: echo "from workflow"
+          
+      
