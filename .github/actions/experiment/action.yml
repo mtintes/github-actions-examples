@@ -1,14 +1,6 @@
 
 name: 'experiment'
-
-inputs:
-  test_property:
-    required: false
-    
-outputs:
-    return_info: 
-      value: ${{ steps.return_info.outputs.action_fruit }}
-      
+       
 runs:
   using: "composite"
   steps:
