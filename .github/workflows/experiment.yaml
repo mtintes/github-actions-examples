@@ -10,7 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v2
       - id: action_id
-        uses: mtintes/github-action-global/actions/return-action@main
+        uses: mtintes/github-action-global/return-action@main
         with:
           test_property: "some test value"
       - run: echo some output ${{ steps.action_id.outputs.return_info }}
