@@ -1,4 +1,4 @@
-name: experiments
+name: Call-Action
 
 on:
   workflow_dispatch:
@@ -8,8 +8,9 @@ jobs:
     name: Call Action
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v3
-      - uses: ./.github/actions/experiment
-      - run: echo "from workflow"
-          
-      
+      - uses: actions/checkout@v2
+      - id: action_id
+        uses: mtintes/github-action-global/actions/return-action@main
+        with:
+          test_property: "some test value"
+      - run: echo some output ${{ steps.action_id.outputs.return_info }}
