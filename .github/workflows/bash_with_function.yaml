@@ -1,0 +1,19 @@
+name: Bash with function
+
+on:
+    workflow_dispatch:
+    
+jobs:
+    job1:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - run: |
+                function test_function{
+                echo "you sent $1"
+                }
+                
+                echo "start"
+                echo test_function "run me"
+                echo "finish"
+                  
