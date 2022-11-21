@@ -9,8 +9,8 @@ jobs:
         steps:
             - uses: actions/checkout@v2
             - run: |
-                function test_function{
-                echo "you sent $1"
+                test_function(){
+                    echo "you sent $1"
                 }
                 
                 echo "start"
