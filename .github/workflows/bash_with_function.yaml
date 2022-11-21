@@ -14,6 +14,6 @@ jobs:
                 }
                 
                 echo "start"
-                echo test_function "run me"
+                test_function "run me"
                 echo "finish"
                   
