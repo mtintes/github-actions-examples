@@ -23,7 +23,7 @@ jobs:
     needs: start
     if: ${{ !failure() }}
     strategy:
-      matrix: ${{ fromJson(needs.start.outputs.pass_this }}
+      matrix: ${{ fromJson(needs.start.outputs.pass_this) }}
     steps:
       - run: echo "I shouldn't run ${{needs.start.outputs.pass_this}}"
       
