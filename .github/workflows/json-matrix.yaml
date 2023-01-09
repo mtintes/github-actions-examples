@@ -3,8 +3,6 @@ name: json matrix
 on:
   workflow_dispatch:
       
-env:
-  
 jobs:
   start:
     name: Pass to other job
