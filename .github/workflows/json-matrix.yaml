@@ -13,9 +13,9 @@ jobs:
       - uses: actions/checkout@v2
       - id: set-matrix
         run: |
-          env_matrix="[{"name":"one"},{"name":"two"},{"name":"three"}]"  
+          env_matrix="[{\"name\":\"one\"},{\"name\":\"two\"},{\"name\":\"three\"}]"  
           echo $env_matrix
-          echo "matrix={"include":$env_matrix}" >> $GITHUB_OUTPUT
+          echo "matrix={\"include\":$env_matrix}" >> $GITHUB_OUTPUT
           
   output-job:
     name: runs
