@@ -14,6 +14,7 @@ jobs:
       - run: |
           mkdir root
           cd root
+          mkdir somestuffIdontwant
           mkdir somestuff-${{ matrix.version }}
           cd somestuff-${{ matrix.version }}
           touch test-${{ matrix.version }}
@@ -21,7 +22,7 @@ jobs:
       - uses: actions/upload-artifact@v3
         with:
           name: my-artifact
-          path: root/
+          path: root/**/somestuff-${{ matrix.version }}
           
   dependency-job:
     name: wait for matrix jobs
