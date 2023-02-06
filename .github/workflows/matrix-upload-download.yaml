@@ -1,0 +1,35 @@
+name: matrix needs
+
+on:
+  workflow_dispatch:
+      
+jobs:       
+  matrix-job:
+    name: runs
+    runs-on: ubuntu-latest
+    strategy:
+      matrix: 
+        version: [1, 2, 3]    
+    steps:
+      - run: |
+          mkdir somestuff-${{ matrix.version }}
+          cd somestuff-${{ matrix.version }}
+          touch test-${{ matrix.version }}
+      
+      - uses: actions/upload-artifact@v3
+        with:
+          name: my-artifact
+          path: somestuff-${{ matrix.version }}
+          
+  dependency-job:
+    name: wait for matrix jobs
+    runs-on: ubuntu-latest
+    needs: matrix-job
+    if: ${{ !failure() }}
+    steps:
+      - run: echo "success"
+      
+      - uses: actions/download-artifact@v3
+        with:
+          name: my-artifact
+          path: right-here
