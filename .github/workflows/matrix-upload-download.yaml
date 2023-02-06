@@ -1,4 +1,4 @@
-name: matrix needs
+name: matrix upload/download
 
 on:
   workflow_dispatch:
