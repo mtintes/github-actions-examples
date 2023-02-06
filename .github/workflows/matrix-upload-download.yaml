@@ -15,6 +15,9 @@ jobs:
           mkdir root
           cd root
           mkdir somestuffIdontwant
+          cd somestuffIdontwant
+          touch bad-file
+          cd ..
           mkdir somestuff-${{ matrix.version }}
           cd somestuff-${{ matrix.version }}
           touch test-${{ matrix.version }}
