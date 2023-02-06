@@ -33,3 +33,7 @@ jobs:
         with:
           name: my-artifact
           path: right-here
+          
+      - name: Display structure of downloaded files
+        run: ls -R
+        working-directory: right-here
