@@ -26,6 +26,7 @@ jobs:
         with:
           name: my-artifact
           path: root/**/somestuff-${{ matrix.version }}
+          retention-days: 1
           
   dependency-job:
     name: wait for matrix jobs
