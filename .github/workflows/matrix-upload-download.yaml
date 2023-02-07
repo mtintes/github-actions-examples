@@ -22,15 +22,15 @@ jobs:
           cd somestuff-${{ matrix.version }}
           touch test-${{ matrix.version }}
       
-      - uses: actions/upload-artifact@v3
-        with:
-          name: my-artifact
-          path: root/**/somestuff-${{ matrix.version }}
+#       - uses: actions/upload-artifact@v3
+#         with:
+#           name: my-artifact
+#           path: root/**/somestuff-${{ matrix.version }}
           
   dependency-job:
     name: wait for matrix jobs
     runs-on: ubuntu-latest
-    needs: matrix-job
+#     needs: matrix-job
     if: ${{ !failure() }}
     steps:
       - run: echo "success"
