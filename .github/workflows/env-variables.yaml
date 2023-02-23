@@ -11,4 +11,5 @@ jobs:
             - run: |
                 test="something"
             - run: |
-                echo test
+                echo dollar $test
+                echo env.test
