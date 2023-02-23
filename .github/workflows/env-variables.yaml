@@ -12,4 +12,4 @@ jobs:
                 test="something"
             - run: |
                 echo dollar $test
-                echo env.test
+                echo ${{ env.test }}
