@@ -1,4 +1,4 @@
-name: Bash with function
+name: env variables
 
 on:
     workflow_dispatch:
