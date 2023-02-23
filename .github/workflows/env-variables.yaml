@@ -9,6 +9,6 @@ jobs:
         steps:
             - uses: actions/checkout@v2
             - run: |
-                echo "matrix=something" >> $GITHUB_OUTPUT
+                echo "matrix=something" >> $GITHUB_ENV
             - run: |
-                echo ${{outputs.matrix}}
+                echo ${{env.matrix}}
