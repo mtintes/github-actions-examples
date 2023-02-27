@@ -9,7 +9,7 @@ jobs:
         steps:
             - name: github ref name
               run: |
-                if [ ${{ github.ref_name }} == "main" || ${{ github.ref_name }} == "master"]; then
+                if [ "${{ github.ref_name }}" == "main" || "${{ github.ref_name }}" == "master"]; then
                   echo "please run this action from a tag version"
                   exit 1
                 fi
