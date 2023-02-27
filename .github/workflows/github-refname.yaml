@@ -1,4 +1,4 @@
-name: env variables
+name: github ref name vs ref
 
 on:
     workflow_dispatch:
