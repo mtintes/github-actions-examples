@@ -1,0 +1,13 @@
+name: env variables
+
+on:
+    workflow_dispatch:
+    
+jobs:
+    job1:
+        runs-on: ubuntu-latest
+        steps:
+            - name: github ref name
+              run: echo ${{ github.ref_name }}
+            - name: github ref
+              run: echo ${{ github.ref }}
