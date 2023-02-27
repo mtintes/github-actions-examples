@@ -7,11 +7,11 @@ jobs:
     job1:
         runs-on: ubuntu-latest
         steps:
-            - name: github ref name
+            - name: fail if main branch
               run: |
-                #if [ "${{ github.ref_name }}" == "main" ] || [ "${{ github.ref_name }}" == "master" ]; then
-                #  echo "please run this action from a tag version"
-                #  exit 1
-                #fi
+                if [ "${{ github.ref_name }}" == "main" ] || [ "${{ github.ref_name }}" == "master" ]; then
+                  echo "please run this action from a tag version"
+                  exit 1
+                fi
                 
                 echo ${GITHUB_REF#*/}
