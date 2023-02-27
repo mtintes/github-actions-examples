@@ -4,6 +4,13 @@ on:
     workflow_dispatch:
     
 jobs:
+    fail-message:
+        runs-on: ubuntu-latest
+        if: startsWith(github.ref, 'refs/tags/') != true
+        steps:
+          - name: Fail check
+            echo "please run this action from a tag version"
+            exit 1
     job1:
         runs-on: ubuntu-latest
         if: startsWith(github.ref, 'refs/tags/')        
