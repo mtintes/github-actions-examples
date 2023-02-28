@@ -21,7 +21,7 @@ jobs:
     name: runs
     runs-on: ubuntu-latest
     needs: start
-    if: ${{ !failure() }}
+    if: ${{ needs.start.outputs.pass_this != '' }}
     strategy:
       matrix: ${{ fromJson(needs.start.outputs.pass_this) }}
     steps:
