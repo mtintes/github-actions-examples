@@ -26,10 +26,10 @@ jobs:
       matrix: ${{ fromJson(needs.start.outputs.pass_this) }}
     steps:
       - name: should run one
-        if: ${{ matrix.name == "one" }}
+        if: ${{ matrix.name == 'one' }}
         run: echo one
       
       - name: should run two
-        if: ${{ matrix.name == "two" }}
+        if: ${{ matrix.name == 'two'}}
         run: echo two
         
