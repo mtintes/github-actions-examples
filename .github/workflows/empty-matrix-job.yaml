@@ -18,6 +18,14 @@ jobs:
           echo $env_matrix
           echo "matrix={\"include\":$env_matrix}" >> $GITHUB_OUTPUT
           
+  output-job-no-matrix:
+    name: runs-no-matrix
+    runs-on: ubuntu-latest
+    needs: start
+    if: ${{ needs.start.outputs.pass_this != '' }}
+    steps:
+      - run: echo "I shouldn't run ${{needs.start.outputs.pass_this}}"
+      
   output-job:
     name: runs
     runs-on: ubuntu-latest
