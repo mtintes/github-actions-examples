@@ -11,6 +11,7 @@ jobs:
       pass_this: ${{ steps.set-matrix.outputs.matrix }}
     steps:
       - uses: actions/checkout@v2
+        if: github.ref == 'meh'
       - id: set-matrix
         run: |
           env_matrix="[]"  
