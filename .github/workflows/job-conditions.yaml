@@ -1,0 +1,34 @@
+name: Weird Job Conditions
+
+on:
+  workflow_dispatch:
+    inputs:
+      test1:
+        description: true or false
+      test2:
+        description: true or false
+        
+env:
+  pass_this: true
+  
+jobs:
+  start:
+    name: Pass to other job
+    runs-on: ubuntu-latest 
+    steps:
+      - run: exit 1
+  
+  NoRun:
+    name: Don't run
+    runs-on: ubuntu-latest
+    needs: start
+    if: ${{ !failure() && (github.event.inputs.test1 || github.event.inputs.test2 }}
+    steps:
+      - run: echo "I shouldn't run"
+      
+  YesRun:
+    name: Do run
+    runs-on: ubuntu-latest
+    needs: start
+    steps:
+      - run: echo "I should run"
