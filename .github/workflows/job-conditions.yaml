@@ -22,7 +22,7 @@ jobs:
     name: Don't run
     runs-on: ubuntu-latest
     needs: start
-    if: ${{ !failure() && (github.event.inputs.test1 == 'true' || github.event.inputs.test2 == 'true' }}
+    if: ${{ !failure() && (github.event.inputs.test1 == 'true' || github.event.inputs.test2 == 'true' )}}
     steps:
       - run: echo "I shouldn't run"
       
