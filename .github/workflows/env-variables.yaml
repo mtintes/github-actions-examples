@@ -12,3 +12,8 @@ jobs:
                 echo "matrix=something" >> $GITHUB_ENV
             - run: |
                 echo ${{env.matrix}}
+    job2:
+        runs-on: ubuntu-latest
+        steps:
+            - run: |
+                echo ${{env.matrix}}
