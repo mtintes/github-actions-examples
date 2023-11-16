@@ -16,4 +16,5 @@ jobs:
         runs-on: ubuntu-latest
         steps:
             - run: |
+                # this won't print anything because env is not shared bt jobs
                 echo ${{env.matrix}}
