@@ -19,7 +19,7 @@ jobs:
           echo "somevar=$env_var" >> $GITHUB_OUTPUT
       - id: set-bool
         run: |
-          echo "env_bool=false" >> $GITHUB_OUTPUT
+          echo "env_bool='false'" >> $GITHUB_OUTPUT
           
   output-job:
     name: echo string
@@ -33,7 +33,7 @@ jobs:
     name: turn on or off
     runs-on: ubuntu-latest
     needs: start
-    if: ${{ needs.start.outputs.check_bool }} !== "false"
+    if: ${{ needs.start.outputs.check_bool }}
     steps:
       - name: maybe runs
         run: echo ${{ needs.start.outputs.check_bool }}
