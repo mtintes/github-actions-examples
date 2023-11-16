@@ -19,7 +19,7 @@ jobs:
           echo "somevar=$env_var" >> $GITHUB_OUTPUT
       - id: set-bool
         run: |
-          echo "env_bool='true'" >> $GITHUB_OUTPUT
+          # echo "env_bool='true'" >> $GITHUB_OUTPUT
           
   output-job:
     name: echo string
