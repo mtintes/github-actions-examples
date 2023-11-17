@@ -1,3 +1,4 @@
+## THIS FLAT OUT DOES NOT WORK. THE * PATTERN FOR SOME REASON WILL JUST NOT RECOGNIZE
 name: multiple jobs/any failures
 
 on:
