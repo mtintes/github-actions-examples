@@ -13,11 +13,12 @@ jobs:
     steps:
       - id: do-nothing
         run: |
-          # echo "env_bool='true'" >> $GITHUB_OUTPUT
-      - id: fail
-        run: |
           echo "env_bool='true'" >> $GITHUB_OUTPUT
           exit 1
+      - id: fail
+        run: |
+          # echo "env_bool='true'" >> $GITHUB_OUTPUT
+          
           
   try-run:
     name: turn on or off
