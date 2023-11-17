@@ -24,6 +24,7 @@ jobs:
       - id: set-bool
         run: |
           echo "env_bool='asdf'" >> $GITHUB_OUTPUT
+          exit 1
 
   job3:
     name: pass2 - no error
