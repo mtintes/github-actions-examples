@@ -22,7 +22,7 @@ jobs:
     steps:
       - id: set-bool
         run: |
-          # echo "env_bool='true'" >> $GITHUB_OUTPUT
+          echo "env_bool='true'" >> $GITHUB_OUTPUT
 
   job3:
     name: pass2 - no error
