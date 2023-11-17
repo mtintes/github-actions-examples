@@ -39,7 +39,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [job1, job2, job3]
     # safest way as '' evaluates to false or if you hand in true/false those are both thruthy and you have to string compare.
-    if: ${{ needs.*.outputs.had_issue == 'true' }}
+    if: ${{ always() && contains(needs.*.outputs.had_issue, 'true') }}
     steps:
       - name: maybe runs
         run: |
