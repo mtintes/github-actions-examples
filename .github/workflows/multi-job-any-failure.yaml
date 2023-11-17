@@ -55,6 +55,11 @@ jobs:
     steps:
       - name: def runs
         run: |
-          echo job1 ${{ contains(needs.job1.outputs.had_issue, 'true') }}
-          echo job2 ${{ contains(needs.job2.outputs.had_issue, 'true') }}
-          echo job3 ${{ contains(needs.job3.outputs.had_issue, 'true') }}
+          echo star ${{ contains(needs.*.outputs.had_issue, 'asdf') }}
+          echo job1 ${{ contains(needs.job1.outputs.had_issue, 'asdf') }}
+          echo job2 ${{ contains(needs.job2.outputs.had_issue, 'asdf') }}
+          echo job3 ${{ contains(needs.job3.outputs.had_issue, 'asdf') }}
+          echo star ${{ contains(needs.*.outputs.had_issue, 'notthis') }}
+          echo job1 ${{ contains(needs.job1.outputs.had_issue, 'notthis') }}
+          echo job2 ${{ contains(needs.job2.outputs.had_issue, 'notthis') }}
+          echo job3 ${{ contains(needs.job3.outputs.had_issue, 'notthis') }}
