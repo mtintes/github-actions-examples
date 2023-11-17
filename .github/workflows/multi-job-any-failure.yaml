@@ -42,6 +42,9 @@ jobs:
     if: ${{ needs.*.outputs.had_issue != '' }}
     steps:
       - name: maybe runs
-        run: echo ${{ needs.start.outputs.check_bool }}
+        run: |
+          echo job1 ${{ needs.job1.outputs.had_issue }}
+          echo job2 ${{ needs.job2.outputs.had_issue }}
+          echo job3 ${{ needs.job3.outputs.had_issue }}
       
         
