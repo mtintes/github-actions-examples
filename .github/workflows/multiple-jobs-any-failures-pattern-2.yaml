@@ -1,4 +1,4 @@
-## THIS FLAT OUT DOES NOT WORK. THE * PATTERN FOR SOME REASON WILL JUST NOT RECOGNIZE
+## THIS PATTERN DOES WORK BUT IS A LITTLE LENGTHY 
 name: multiple jobs/any failures pattern 2
 
 on:
@@ -54,7 +54,7 @@ jobs:
     steps:
       - name: def runs
         run: |
-          if [[ ${{ contains(needs.job2.outputs.had_issue, 'asdf') }} ]]; then
+          if [[ ${{ contains(needs.job2.outputs.had_issue, 'asdf') }} || ${{ contains(needs.job1.outputs.had_issue, 'asdf') }}]]; then
             echo yup
           fi
 
