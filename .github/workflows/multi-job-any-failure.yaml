@@ -63,3 +63,4 @@ jobs:
           echo job1 ${{ contains(needs.job1.outputs.had_issue, 'notthis') }}
           echo job2 ${{ contains(needs.job2.outputs.had_issue, 'notthis') }}
           echo job3 ${{ contains(needs.job3.outputs.had_issue, 'notthis') }}
+          echo star-out ${{ needs.* }}
