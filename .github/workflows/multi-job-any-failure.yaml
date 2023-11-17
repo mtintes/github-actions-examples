@@ -22,7 +22,7 @@ jobs:
     steps:
       - id: set-bool
         run: |
-          echo "env_bool='true'" >> $GITHUB_OUTPUT
+          echo "env_bool='asdf'" >> $GITHUB_OUTPUT
 
   job3:
     name: pass2 - no error
@@ -39,7 +39,7 @@ jobs:
     runs-on: ubuntu-latest
     needs: [job1, job2, job3]
     # safest way as '' evaluates to false or if you hand in true/false those are both thruthy and you have to string compare.
-    if: ${{ always() && contains(needs.*.outputs.had_issue, true) }}
+    if: ${{ always() && contains(needs.*.outputs.had_issue, 'asdf') }}
     steps:
       - name: maybe runs
         run: |
