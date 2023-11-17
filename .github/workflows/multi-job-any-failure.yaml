@@ -64,7 +64,7 @@ jobs:
           echo job2 ${{ contains(needs.job2.outputs.had_issue, 'notthis') }}
           echo job3 ${{ contains(needs.job3.outputs.had_issue, 'notthis') }}
 
-          for value in fromJson( ${{needs[@]}}); do
+          for value in fromJson( ${{needs}}); do
             echo $value
           done
           
