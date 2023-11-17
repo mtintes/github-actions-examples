@@ -14,7 +14,7 @@ jobs:
       - id: do-nothing
         run: |
           # echo "env_bool='true'" >> $GITHUB_OUTPUT
-      - if: fail
+      - id: fail
         run: |
           echo "env_bool='true'" >> $GITHUB_OUTPUT
           exit 1
