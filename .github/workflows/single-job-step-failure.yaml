@@ -41,5 +41,5 @@ jobs:
       - name: def runs
         run: |
           if [[ ${{ contains(needs.job1.outputs.had_issue, 'true') }} ]]; then
-            echo yup
+            echo "::error:: yup"
           fi
