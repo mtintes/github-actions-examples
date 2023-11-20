@@ -13,7 +13,7 @@ jobs:
     steps:
       - id: do-nothing
         run: |
-          echo "env_bool='true'" >> $GITHUB_OUTPUT
+          echo "env_bool=true" >> $GITHUB_OUTPUT
           exit 1
       - id: fail
         run: |
@@ -36,9 +36,10 @@ jobs:
     runs-on: ubuntu-latest
     needs: [job1]
     # safest way as '' evaluates to false or if you hand in true/false those are both truthy and you have to string compare.
+    if: ${{ always() && contains(needs.*.result, 'failure') }}
     steps:
       - name: def runs
         run: |
-          if [[ ${{ contains(needs.job1.outputs.had_issue, 'asdf') }} ]]; then
+          if [[ ${{ contains(needs.job1.outputs.had_issue, 'true') }} ]]; then
             echo yup
           fi
