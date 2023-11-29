@@ -15,4 +15,9 @@ jobs:
         with:
           test_property: "yes"
       - run: echo some output ${{ steps.action_id.outputs.return_info }}
+  on_fail:
+    name: Did fail?
+    if: ${{ always() }}
+    runs-on: ubuntu-latest
+    steps:
       - run: echo $GITHUB_STEP_SUMMARY
