@@ -17,5 +17,6 @@ runs:
         echo "set output"
         echo "action_fruit=Apple" >> $GITHUB_OUTPUT
         if [[ ${{ inputs.test_property }} == "yes" ]]; then
+        echo "this is something" >> $GITHUB_STEP_SUMMARY
         exit 1
         fi
