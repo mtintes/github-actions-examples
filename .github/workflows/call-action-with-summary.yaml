@@ -13,5 +13,5 @@ jobs:
       - id: action_id
         uses: ./.github/actions/return-action
         with:
-          test_property: "yup"
+          test_property: "yes"
       - run: echo some output ${{ steps.action_id.outputs.return_info }}
