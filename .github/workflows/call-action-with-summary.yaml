@@ -15,3 +15,4 @@ jobs:
         with:
           test_property: "yes"
       - run: echo some output ${{ steps.action_id.outputs.return_info }}
+      - run: echo $GITHUB_STEP_SUMMARY
