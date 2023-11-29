@@ -15,4 +15,7 @@ runs:
       id: return_info
       run: |
         echo "set output"
-        echo "::set-output name=action_fruit::strawberry"
+        echo "action_fruit=Apple" >> $GITHUB_OUTPUT
+        if [[ ${{ inputs.test_property }} == "yes" ]]; then
+        exit 1
+        fi
