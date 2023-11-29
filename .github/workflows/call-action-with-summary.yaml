@@ -20,4 +20,4 @@ jobs:
     if: ${{ always() }}
     runs-on: ubuntu-latest
     steps:
-      - run: echo $GITHUB_STEP_SUMMARY
+      - run: echo "this is something else" > $GITHUB_STEP_SUMMARY
