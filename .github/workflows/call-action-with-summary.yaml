@@ -1,0 +1,17 @@
+name: Call-Action outputs Summary
+
+on:
+  workflow_dispatch:
+      
+
+jobs:
+  start:
+    name: Call Action
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - id: action_id
+        uses: ./.github/actions/return-action
+        with:
+          test_property: "yup"
+      - run: echo some output ${{ steps.action_id.outputs.return_info }}
