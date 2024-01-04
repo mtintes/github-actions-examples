@@ -9,7 +9,7 @@ jobs:
     name: failure
     runs-on: ubuntu-latest
     outputs:
-      had_issue: ${{ steps.do-nothing.outputs.env_bool }}
+      had_issue: ${{ steps.fail.outputs.env_bool }}
     steps:
       - id: fail
         run: |
