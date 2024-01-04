@@ -8,9 +8,12 @@ jobs:
   job1:
     name: failure
     runs-on: ubuntu-latest
+    outputs:
+      had_issue: ${{ steps.do-nothing.outputs.env_bool }}
     steps:
       - id: fail
         run: |
+          echo "env_bool=ya" >> $GITHUB_OUTPUT
           echo "fail"
           exit 1
   job2:
@@ -32,5 +35,6 @@ jobs:
       - name: maybe runs
         run: |
           echo job1 ${{ needs.job1.result }}
+          echo job1 step1 ${{ needs.job1.outputs.had_issue }}
           echo job2 ${{ needs.job2.result }}
   
