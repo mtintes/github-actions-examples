@@ -11,5 +11,5 @@ jobs:
             - run: |
                 go version
                 cd goapp
-                go run ./...
+                result=$(go run ./...)
                 echo $?
