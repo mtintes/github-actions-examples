@@ -16,5 +16,6 @@ jobs:
                 trap ./main EXIT                
                 echo made it here
                 echo $?
+                echo $EXIT
             - run: |
                 echo here
