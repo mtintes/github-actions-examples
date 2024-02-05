@@ -13,7 +13,7 @@ jobs:
                 cd goapp
                 go build main.go
                 sudo chmod +x main            
-                eval "./main"                
+                trap ./main EXIT                
                 echo made it here
                 echo $?
             - run: |
