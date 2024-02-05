@@ -10,3 +10,5 @@ jobs:
             - uses: actions/checkout@v2
             - run: |
                 go version
+                cd goapp
+                go run ./...
