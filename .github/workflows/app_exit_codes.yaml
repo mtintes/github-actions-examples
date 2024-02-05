@@ -12,6 +12,6 @@ jobs:
                 go version
                 cd goapp
                 go build main.go
-                sudo chmod +x main.go             
-                ./main.go
+                sudo chmod +x main            
+                ./main
                 echo $?
