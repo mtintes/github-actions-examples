@@ -13,5 +13,5 @@ jobs:
                 cd goapp
                 go build main.go
                 sudo chmod +x main            
-                ./main
+                result=$(./main)
                 echo $?
