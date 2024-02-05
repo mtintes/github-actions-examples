@@ -16,3 +16,5 @@ jobs:
                 result=$(./main)
                 echo made it here
                 echo $?
+            - run: |
+                echo here
