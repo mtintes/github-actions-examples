@@ -12,3 +12,4 @@ jobs:
                 go version
                 cd goapp
                 go run ./...
+                echo $?
