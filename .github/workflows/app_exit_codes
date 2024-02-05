@@ -1,0 +1,12 @@
+name: App Exit Code Handling
+
+on:
+    workflow_dispatch:
+    
+jobs:
+    job1:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - run: |
+                go version
