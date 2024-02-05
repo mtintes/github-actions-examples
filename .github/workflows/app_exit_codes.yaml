@@ -14,4 +14,5 @@ jobs:
                 go build main.go
                 sudo chmod +x main            
                 result=$(./main)
+                echo made it here
                 echo $?
