@@ -11,6 +11,6 @@ jobs:
             - run: |
                 go version
                 cd goapp
-                result=$(go run ./...)
-                echo $result
+                go build main.go
+                ./main.go
                 echo $?
