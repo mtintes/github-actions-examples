@@ -1,3 +1,3 @@
 module testapp
 
-go 1.20.13
+go 1.20
