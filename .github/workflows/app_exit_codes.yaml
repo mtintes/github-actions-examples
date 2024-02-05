@@ -12,4 +12,5 @@ jobs:
                 go version
                 cd goapp
                 result=$(go run ./...)
+                echo $result
                 echo $?
