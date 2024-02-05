@@ -2,9 +2,10 @@ package main
 
 import (
 	"log"
+	"os"
 )
 
 func main() {
 	log.Println("Hello, World!")
-	log.Panicln("test")
+	os.Exit(2)
 }
