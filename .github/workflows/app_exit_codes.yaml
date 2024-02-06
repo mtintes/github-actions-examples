@@ -29,5 +29,9 @@ jobs:
         if: ${{ always() && contains(needs.*.result, 'failure') }}
         steps:
             - run: |
-                echo ${{ needs.job1.outputs.exit_code }}
-                echo "failure_message=thinking"
+                if [ ${{ needs.job1.result }} -eq 'success' ]; then
+                    echo "success"
+                else
+                    echo ${{ needs.job1.outputs.exit_code }}
+                fi
+                
