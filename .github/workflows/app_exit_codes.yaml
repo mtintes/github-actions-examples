@@ -26,6 +26,7 @@ jobs:
     job2:
         needs: job1
         runs-on: ubuntu-latest
+        if: ${{ always() && contains(needs.*.result, 'failure') }}
         steps:
             - run: |
                 echo ${{ needs.job1.outputs.exit_code }}
