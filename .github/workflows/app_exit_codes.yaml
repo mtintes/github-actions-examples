@@ -6,16 +6,27 @@ on:
 jobs:
     job1:
         runs-on: ubuntu-latest
+        outputs:
+            exit_code: ${{ steps.set_exit_code.outputs.failure_message }}
         steps:
             - uses: actions/checkout@v2
-            - run: |
+            - id: set_exit_code
+              run: |
                 go version
                 cd goapp
                 go build main.go
-                sudo chmod +x main            
-                trap ./main EXIT  
+                sudo chmod +x main
+                trap ./main EXIT
                 echo do something else
-                
+                echo "failure_message=thinking" >> $GITHUB_OUTPUT
                 
             - run: |
                 echo here
+
+    job2:
+        needs: job1
+        runs-on: ubuntu-latest
+        steps:
+            - run: |
+                echo ${{ needs.job1.outputs.exit_code }}
+                echo "failure_message=thinking"
