@@ -16,8 +16,9 @@ jobs:
                 cd goapp
                 go build main.go
                 sudo chmod +x main
-                result=$(set +e; ./main)
+                result=$(set -e; ./main)
                 echo code $?
+                echo result $result
                 echo do something else
                 echo "failure_message=do_something" >> $GITHUB_OUTPUT
                 
