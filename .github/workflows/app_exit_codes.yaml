@@ -20,8 +20,9 @@ jobs:
 
                 go version
                 cd goapp
-                trap "run" EXIT          
-                echo made it here
+                trap "run" EXIT  
                 echo $?
+                echo made it here
+
             - run: |
                 echo here
