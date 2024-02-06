@@ -6,5 +6,4 @@ import (
 
 func main() {
 	log.Println("Hello, World!")
-
 }

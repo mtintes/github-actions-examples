@@ -10,15 +10,16 @@ jobs:
             exit_code: ${{ steps.set_exit_code.outputs.failure_message }}
         steps:
             - uses: actions/checkout@v2
-            - id: set_exit_code
+            - id: do_something
               run: |
                 go version
                 cd goapp
                 go build main.go
                 sudo chmod +x main
-                trap ./main EXIT
+                result=$(set +e; ./main)
+                echo code $?
                 echo do something else
-                echo "failure_message=thinking" >> $GITHUB_OUTPUT
+                echo "failure_message=do_something" >> $GITHUB_OUTPUT
                 
             - run: |
                 echo here
