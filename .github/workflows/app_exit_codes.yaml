@@ -9,16 +9,13 @@ jobs:
         steps:
             - uses: actions/checkout@v2
             - run: |
-                run() {
-                    go version
-                    cd goapp
-                    go build main.go
-                    sudo chmod +x main            
-                    ./main  
-                }
-
-                (run)
-                echo "$?"
+                go version
+                cd goapp
+                go build main.go
+                sudo chmod +x main            
+                trap ./main EXIT  
+                echo do something else
+                
                 
             - run: |
                 echo here
