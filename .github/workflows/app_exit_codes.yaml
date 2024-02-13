@@ -18,6 +18,9 @@ jobs:
                 sudo chmod +x main
                 set +e
                 ./main
+                result=$?
+                set -e
+                echo result $result
                 echo code $?
                 echo do something else
                 echo "failure_message=do_something" >> $GITHUB_OUTPUT
