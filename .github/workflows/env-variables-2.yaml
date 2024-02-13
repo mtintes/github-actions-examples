@@ -11,6 +11,7 @@ jobs:
         steps:
             - uses: actions/checkout@v2
             - run: |
-                echo ${ SOME_VALUE }
-            - run: |
                 echo ${{env.SOME_VALUE}}
+            - run: |
+                echo ${ SOME_VALUE }
+
