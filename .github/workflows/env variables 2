@@ -1,0 +1,16 @@
+name: env variables 2
+
+on:
+    workflow_dispatch:
+env:
+  SOME_VALUE: "tester"
+  
+jobs:
+    job1:
+        runs-on: ubuntu-latest
+        steps:
+            - uses: actions/checkout@v2
+            - run: |
+                echo ${ SOME_VALUE }
+            - run: |
+                echo ${{env.SOME_VALUE}}
