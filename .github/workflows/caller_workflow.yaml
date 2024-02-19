@@ -9,6 +9,6 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v2
       - name: Run Reusable Workflow
-        uses: ./.github/workflows/reusable-workflow
+        uses: ./.github/workflows/reusable-workflow.yaml
         with:
           input: "mtintes"
