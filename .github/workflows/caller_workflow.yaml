@@ -3,12 +3,10 @@ name: Caller Workflow (Uses reusable workflow)
 on: workflow_dispatch
 
 jobs:
-  build:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout
-        uses: actions/checkout@v2
-      - name: Run Reusable Workflow
-        uses: ./.github/workflows/reusable-workflow.yaml
-        with:
-          input: "mtintes"
+  caller-job:
+    permissions:
+      contents: read
+      pull-requests: write
+    uses: mtintes/github-actions-examples/.github/workflows/reusable_workflow.yaml@main
+    with:
+      name: "mtintes"
