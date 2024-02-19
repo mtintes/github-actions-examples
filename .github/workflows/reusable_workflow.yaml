@@ -1,0 +1,23 @@
+name: Hello World Workflow
+
+on:
+    workflow_dispatch:
+        inputs:
+            name:
+                description: 'Person to greet'
+                required: true
+                default: 'Mona the Octocat'
+    workflow_call:
+        inputs:
+            name:
+                description: 'Person to greet'
+                required: true
+                default: 'Mona the Octocat'
+
+jobs:
+    hello_world_job:
+        runs-on: ubuntu-latest
+
+        steps:
+            - name: Say Hello
+                run: echo "Hello ${{ inputs.name }}!"
