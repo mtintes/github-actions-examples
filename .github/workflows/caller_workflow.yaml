@@ -3,6 +3,11 @@ name: Caller Workflow (Uses reusable workflow)
 on: workflow_dispatch
 
 jobs:
+  do-something:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Do something
+        run: echo "Doing something"
   caller-job:
     permissions:
       contents: read
