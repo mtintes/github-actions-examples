@@ -1,0 +1,17 @@
+name: concurrency-run
+
+concurrency:
+  group: "test"
+
+on:
+  workflow_dispatch:
+
+jobs:
+  hello-world:
+    name: hello
+    runs-on: ubuntu-latest
+    steps:
+      - name: hello
+        run: |
+          sleep 10
+          echo "hello world"
