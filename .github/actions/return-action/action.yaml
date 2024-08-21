@@ -18,5 +18,7 @@ runs:
         echo "action_fruit=Apple" >> $GITHUB_OUTPUT
         if [[ ${{ inputs.test_property }} == "yes" ]]; then
         echo "this is something" >> $GITHUB_STEP_SUMMARY
+        echo "error_step=return-action" >> $GITHUB_OUTPUT
+        echo "error_step_message=This is an error message" >> $GITHUB_OUTPUT
         exit 1
         fi
