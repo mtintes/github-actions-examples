@@ -26,8 +26,8 @@ jobs:
     steps:
       - run: |
             if [[ ${{ needs.start.result }} == 'failure' ]]; then
-              if [[ ${{ needs.pre-promotion-check.outputs.errorStep }} == 'return-action' ]]; then
-                echo "Error step: ${{ needs.pre-promotion-check.outputs.errorStep }}"
-                echo "Error message: ${{ needs.pre-promotion-check.outputs.errorStepMessage }}"
+              if [[ ${{ needs.start.outputs.errorStep }} == 'return-action' ]]; then
+                echo "Error step: ${{ needs.start.outputs.errorStep }}"
+                echo "Error message: ${{ needs.start.outputs.errorStepMessage }}"
               fi
             fi
