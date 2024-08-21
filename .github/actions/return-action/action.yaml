@@ -7,6 +7,10 @@ inputs:
 outputs:
     return_info: 
       value: ${{ steps.return_info.outputs.action_fruit }}
+    error_step:
+      value: ${{ steps.return_info.outputs.error_step || ''}}
+    error_step_message:
+      value: ${{ steps.return_info.outputs.error_step_message || ''}}
       
 runs:
   using: "composite"
