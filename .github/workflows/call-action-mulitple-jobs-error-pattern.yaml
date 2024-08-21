@@ -1,0 +1,33 @@
+name: Call-Action outputs Summary
+
+on:
+  workflow_dispatch:
+      
+
+jobs:
+  start:
+    name: Call Action
+    runs-on: ubuntu-latest
+    outputs:
+      errorStep: ${{ steps.action_id.outputs.error_step || ''}}
+      errorStepMessage: ${{ steps.action_id.outputs.error_step_message || ''}}
+    steps:
+      - uses: actions/checkout@v2
+      - id: action_id
+        uses: ./.github/actions/return-action
+        with:
+          test_property: "yes"
+      - run: echo some output ${{ steps.action_id.outputs.return_info }}
+  on_fail:
+    name: Did fail?
+    if: ${{ always() && contains(needs.*.result, 'failure') }}
+    runs-on: ubuntu-latest
+    needs: start
+    steps:
+      - run: |
+            if [[ ${{ needs.start.result }} == 'failure' ]]; then
+              if [[ ${{ needs.pre-promotion-check.outputs.errorStep }} == 'return-action' ]]; then
+                echo "Error step: ${{ needs.pre-promotion-check.outputs.errorStep }}"
+                echo "Error message: ${{ needs.pre-promotion-check.outputs.errorStepMessage }}"
+              fi
+            fi
