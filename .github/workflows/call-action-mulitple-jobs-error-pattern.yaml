@@ -19,11 +19,12 @@ jobs:
       - name: step 1
         id: step-1
         run: |  
+          echo "error_step=step-1" >> $GITHUB_OUTPUT
+          echo "error_step_message=step-2" >> $GITHUB_OUTPUT
           if [[ '${{ github.event.inputs.step-to-fail }}' == '1' ]]; then
-            echo "error_step=step-1" >> $GITHUB_OUTPUT
-            echo "error_step_message=step-2" >> $GITHUB_OUTPUT
             exit 1
           fi
+          
       - id: action_id
         uses: ./.github/actions/return-action
         with:
