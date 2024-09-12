@@ -15,7 +15,7 @@ jobs:
 
       - name: always fail
         run: |
-          exit 1
+          ls /dssdf
           echo test
         continue-on-error: true
 
