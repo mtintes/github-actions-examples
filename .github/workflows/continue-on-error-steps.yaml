@@ -1,0 +1,24 @@
+name: continue-on-error-steps
+
+on:
+  workflow_dispatch:
+      
+  
+jobs:
+  start:
+    name: Pass to other job
+    runs-on: ubuntu-latest
+      
+    steps:
+      - uses: actions/checkout@v2
+      - run: echo "I'm doing nothing"
+
+      - name: always fail
+        run: exit 1
+        continue-on-error: true
+
+      - name: do something with failure
+        run: |
+            echo "I am running"
+            exit 1
+    
