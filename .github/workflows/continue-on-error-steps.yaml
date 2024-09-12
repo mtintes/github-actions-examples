@@ -14,7 +14,9 @@ jobs:
       - run: echo "I'm doing nothing"
 
       - name: always fail
-        run: exit 1
+        run: |
+          exit 1
+          echo test
         continue-on-error: true
 
       - name: do something with failure
