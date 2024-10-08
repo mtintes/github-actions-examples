@@ -24,4 +24,4 @@ jobs:
                 sleep 30
                 echo finish ${{ matrix.version }}
                 echo
-                git lfs unlock --force lockfile.lock
+                git lfs unlock lockfile.lock
