@@ -1,5 +1,6 @@
 name: Weird Job Conditions
-
+#Tests out "if" conditional job conditions
+#Subject to change a bit
 on:
   workflow_dispatch:
     inputs:
