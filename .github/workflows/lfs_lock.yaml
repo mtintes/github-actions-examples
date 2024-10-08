@@ -14,11 +14,21 @@ jobs:
           - uses: actions/checkout@v4
           - run: |
                 git lfs install
-                git lfs lock lockfile.lock || wait=true
+                git lfs lock lockfile.lock
+                if [ $? -eq 0 ]; then
+                    wait=false
+                else
+                    wait=true
+                fi
                 if $wait; then
                     echo "Waiting for lock to be released"
                     sleep 5
-                    git lfs lock lockfile.lock || wait=true
+                    git lfs lock lockfile.lock
+                    if [ $? -eq 0 ]; then
+                        wait=false
+                    else
+                        wait=true
+                    fi
                 fi
                 echo start ${{ matrix.version }}
                 sleep 60
