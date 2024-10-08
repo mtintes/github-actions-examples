@@ -15,12 +15,12 @@ jobs:
           - run: |
                 git lfs install
                 git lfs lock lockfile.lock || wait=true
-                if $wait; then
+                while $wait; do
                     echo "Waiting for lock to be released"
                     sleep 5
                     wait=false
                     git lfs lock lockfile.lock || wait=true
-                fi
+                done
                 echo start ${{ matrix.version }}
                 sleep 60
                 echo finish ${{ matrix.version }}
