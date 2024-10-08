@@ -1,0 +1,27 @@
+name: lfs-lock
+
+on:
+    workflow_dispatch:
+
+jobs:
+    matrix-job:
+        name: runs
+        runs-on: ubuntu-latest
+        strategy:
+          matrix: 
+            version: [1, 2, 3]    
+        steps:
+          - uses: actions/checkout@v4
+          - run: |
+                git lfs install
+                git lfs lock lockfile.lock || wait=true
+                if $wait; then
+                    echo "Waiting for lock to be released"
+                    sleep 5
+                    git lfs lock lockfile.lock || wait=true
+                fi
+                echo start ${{ matrix.version }}
+                sleep 5
+                echo finish ${{ matrix.version }}
+                echo
+                git lfs unlock --force lockfile.lock
