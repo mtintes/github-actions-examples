@@ -26,14 +26,22 @@ jobs:
 
                 echo start ${{ matrix.version }}
                 if [[ -f somefile.txt ]]; then
+                    
                     cat somefile.txt
+                else
+                    echo "somefile.txt not found"
                 fi
                 
                 git config --global user.name 'mtintes'
                 git config --global user.email 'mike.tintes@hotmail.com'
                 echo "Write ${{ matrix.version }}" > somefile.txt
-                git diff-index --quiet HEAD || git commit -am "Write ${{ matrix.version }}" -m "Wrote ${{ matrix.version }}"
+                echo "diff-index"
+                git diff-index --quiet HEAD 
+                echo "commit"
+                git commit -am "Write ${{ matrix.version }}" -m "Wrote ${{ matrix.version }}"
+                echo "fetch"
                 git fetch origin main
+                echo "rebase"
                 git rebase origin/main
                 git push
 
