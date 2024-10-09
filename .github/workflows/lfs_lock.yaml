@@ -33,6 +33,7 @@ jobs:
                 
                 git config --global user.name 'mtintes'
                 git config --global user.email 'mike.tintes@hotmail.com'
+                git pull
                 echo "Write ${{ matrix.version }}" > somefile.txt
                 echo "diff-index"
                 git diff-index --quiet HEAD
@@ -40,10 +41,10 @@ jobs:
                 git add somefile.txt 
                 echo "commit"
                 git commit -am "Write ${{ matrix.version }}" -m "Wrote ${{ matrix.version }}"
-                echo "fetch"
-                git fetch origin main
-                echo "rebase"
-                git rebase origin/main
+                # echo "fetch"
+                # git fetch origin main
+                # echo "rebase"
+                # git rebase origin/main
                 git push
 
                 echo finish ${{ matrix.version }}
