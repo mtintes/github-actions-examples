@@ -4,3 +4,4 @@ Write 1 - 27395
 Write 3 - 13264
 Write 2 - 29682
 Write 2 - 26207
+Write 3 - 31579
