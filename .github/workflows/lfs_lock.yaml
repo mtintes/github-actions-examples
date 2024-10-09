@@ -9,7 +9,7 @@ jobs:
         runs-on: ubuntu-latest
         strategy:
           matrix: 
-            version: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+            version: [1, 2, 3]
         steps:
           - uses: actions/checkout@v4
           - run: |
@@ -35,7 +35,9 @@ jobs:
                 git config --global user.email 'mike.tintes@hotmail.com'
                 echo "Write ${{ matrix.version }}" > somefile.txt
                 echo "diff-index"
-                git diff-index --quiet HEAD 
+                git diff-index --quiet HEAD
+                echo "add"
+                git add somefile.txt 
                 echo "commit"
                 git commit -am "Write ${{ matrix.version }}" -m "Wrote ${{ matrix.version }}"
                 echo "fetch"
