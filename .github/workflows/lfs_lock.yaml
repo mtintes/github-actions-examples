@@ -25,19 +25,19 @@ jobs:
                 done
 
                 echo start ${{ matrix.version }}
-                if [[ -f somefile.txt ]]; then
-                    cat somefile.txt
+                if [[ -f somefile-${{matrix.version}}.txt ]]; then
+                    cat somefile-${{matrix.version}}.txt
                 else
-                    echo "somefile.txt not found"
+                    echo "somefile-${{matrix.version}}.txt not found"
                 fi
                 
                 git config --global user.name 'mtintes'
                 git config --global user.email 'mike.tintes@hotmail.com'
-                echo "Write ${{ matrix.version }} - $RANDOM" >> somefile.txt
+                echo "Write ${{ matrix.version }} - $RANDOM" >> somefile-${{matrix.version}}.txt
                 # echo "diff-index"
                 # git diff-index --quiet HEAD
                 echo "add"
-                git add somefile.txt 
+                git add somefile-${{matrix.version}}.txt 
                 echo "commit"
                 git commit -am "Write ${{ matrix.version }}" -m "Wrote ${{ matrix.version }}"
                 echo "fetch"
@@ -47,5 +47,5 @@ jobs:
                 git push
 
                 echo finish ${{ matrix.version }}
-                cat somefile.txt
+                cat somefile-${{matrix.version}}.txt
                 git lfs unlock lockfile.lock
