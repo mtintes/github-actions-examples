@@ -31,10 +31,9 @@ jobs:
                     echo "somefile.txt not found"
                 fi
                 
-                
                 git config --global user.name 'mtintes'
                 git config --global user.email 'mike.tintes@hotmail.com'
-                echo "Write ${{ matrix.version }} - $RANDOM" > somefile.txt
+                echo "Write ${{ matrix.version }} - $RANDOM" >> somefile.txt
                 # echo "diff-index"
                 # git diff-index --quiet HEAD
                 echo "add"
