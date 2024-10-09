@@ -26,7 +26,6 @@ jobs:
 
                 echo start ${{ matrix.version }}
                 if [[ -f somefile.txt ]]; then
-                    
                     cat somefile.txt
                 else
                     echo "somefile.txt not found"
