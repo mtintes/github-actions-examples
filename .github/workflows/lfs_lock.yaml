@@ -25,7 +25,10 @@ jobs:
                 done
 
                 echo start ${{ matrix.version }}
-                cat somefile.txt
+                if [[ -f somefile.txt ]]; then
+                    cat somefile.txt
+                fi
+                
                 git config --global user.name 'mtintes'
                 git config --global user.email 'mike.tintes@hotmail.com'
                 echo "Write ${{ matrix.version }}" > somefile.txt
