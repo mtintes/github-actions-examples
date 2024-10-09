@@ -35,5 +35,5 @@ jobs:
                 git push
 
                 echo finish ${{ matrix.version }}
-                echo
+                cat somefile.txt
                 git lfs unlock lockfile.lock
