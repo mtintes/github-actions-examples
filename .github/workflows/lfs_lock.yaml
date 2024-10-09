@@ -13,16 +13,27 @@ jobs:
         steps:
           - uses: actions/checkout@v4
           - run: |
+                wait=false
                 git lfs install
                 git lfs lock lockfile.lock || wait=true
+
                 while $wait; do
                     echo "Waiting for lock to be released"
-                    sleep 5
+                    sleep 1
                     wait=false
                     git lfs lock lockfile.lock || wait=true
                 done
+
                 echo start ${{ matrix.version }}
-                sleep 10
+
+                git config --global user.name 'mtintes'
+                git config --global user.email 'mike.tintes@hotmail.com'
+                echo "Write ${{ matrix.version }}" > somefile.txt
+                git diff-index --quiet HEAD || git commit -am "Write ${{ matrix.version }}" -m "Wrote ${{ matrix.version }}"
+                git fetch origin main
+                git rebase origin/main
+                git push
+
                 echo finish ${{ matrix.version }}
                 echo
                 git lfs unlock lockfile.lock
