@@ -25,20 +25,20 @@ jobs:
                 #done
 
                 echo start ${{ matrix.version }}
-                if [[ -f somefile.txt ]]; then
-                    cat somefile.txt
+                if [[ -f somefile.json ]]; then
+                    cat somefile.json
                 else
-                    echo "somefile.txt not found"
+                    echo "somefile.json not found"
                 fi
 
                 git pull origin main
                 git config --global user.name 'mtintes'
                 git config --global user.email 'mike.tintes@hotmail.com'
-                echo "jq --arg number "property${{matrix.version}}" --arg random $RANDOM '.[$number]=$random' somefile.json" > somefile.txt
+                jq --arg number "property${{matrix.version}}" --arg random "$RANDOM" '.[$number]=$random' somefile.json > somefile.json
                 # echo "diff-index"
                 # git diff-index --quiet HEAD
                 echo "add"
-                git add somefile.txt 
+                git add somefile.json 
                 echo "commit"
                 git commit -am "Write ${{ matrix.version }}" -m "Wrote ${{ matrix.version }}"
                 echo "fetch"
@@ -48,5 +48,5 @@ jobs:
                 git push
 
                 echo finish ${{ matrix.version }}
-                cat somefile.txt
+                cat somefile.json
                 #git lfs unlock lockfile.lock
