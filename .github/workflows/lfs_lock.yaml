@@ -34,8 +34,8 @@ jobs:
                 git pull origin main
                 git config --global user.name 'mtintes'
                 git config --global user.email 'mike.tintes@hotmail.com'
-                jq -r --arg number "property${{matrix.version}}" --arg random "$RANDOM" '.[$number]=$random' somefile.json > somefile.tmp && mv somefile.tmp somefile.json
-                rm -f somefile.tmp
+                jq -r --arg number "property${{matrix.version}}" --arg random "$RANDOM" '.[$number]=$random' somefile.json > somefile.tmp 
+                mv somefile.tmp somefile.json
                 # echo "diff-index"
                 # git diff-index --quiet HEAD
                 echo "add"
