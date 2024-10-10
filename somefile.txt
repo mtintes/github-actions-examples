@@ -1,1 +1,5 @@
-jq --arg number property1 --arg random 11758 '.[]=' somefile.json
+{
+    "property1": "value1",
+    "property2": "value2",
+    "property3": "value3"
+}
