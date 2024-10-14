@@ -13,7 +13,7 @@ jobs:
         steps:
           - uses: actions/checkout@v4
           - run: |
-                wait=false
+                wait=false 
                 git lfs install
                 git lfs lock lockfile.lock || wait=true
 
@@ -31,6 +31,11 @@ jobs:
                     echo "somefile.json not found"
                 fi
 
+                if [[ ${{matrix.version}} -eq 1 ]]; then
+                    echo "This is version 1"
+                    exit 1
+                fi
+                
                 git pull origin main
                 git config --global user.name 'mtintes'
                 git config --global user.email 'mike.tintes@hotmail.com'
@@ -50,4 +55,8 @@ jobs:
 
                 echo finish ${{ matrix.version }}
                 cat somefile.json
+            id: lock-and-commit
+          - name: Unlock
+            if: always()
+            run: |
                 git lfs unlock lockfile.lock
