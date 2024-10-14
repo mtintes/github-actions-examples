@@ -31,11 +31,12 @@ jobs:
                     echo "somefile.json not found"
                 fi
 
-                if [[ ${{matrix.version}} -eq 1 ]]; then
-                    echo "This is version 1"
+                even = ${{ matrix.version  }} % 2
+                if [[ $even -eq 0 ]]; then
+                    echo "This is version ${{ matrix.version }}"
                     exit 1
                 fi
-                
+
                 git pull origin main
                 git config --global user.name 'mtintes'
                 git config --global user.email 'mike.tintes@hotmail.com'
@@ -59,4 +60,7 @@ jobs:
           - name: Unlock
             if: always()
             run: |
-                git lfs unlock lockfile.lock
+                even = ${{ matrix.version  }} % 2
+                if [[ $even -eq 0 ]]; then
+                    git lfs unlock lockfile.lock
+                fi
