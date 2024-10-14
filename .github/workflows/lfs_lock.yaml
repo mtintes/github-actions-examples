@@ -50,4 +50,4 @@ jobs:
 
                 echo finish ${{ matrix.version }}
                 cat somefile.json
-                #git lfs unlock lockfile.lock
+                git lfs unlock lockfile.lock
