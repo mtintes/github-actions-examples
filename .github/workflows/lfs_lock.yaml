@@ -18,9 +18,10 @@ jobs:
                 git lfs lock lockfile.lock || wait=true
                 count=0
                 while $wait; do
-                    if [ $count -gt 300 ]; then
+                    if [ $count -gt 30 ]; then
                         echo "Timeout waiting for lock"
                         git lfs unlock lockfile.lock || echo "No lock to unlock"
+                        count=0
                     fi
                     count=$((count+1))
                     echo "Waiting for lock to be released: $count"
@@ -36,7 +37,7 @@ jobs:
                     echo "somefile.json not found"
                 fi
 
-                sleep 60
+                sleep 5
                 git config --global user.name 'mtintes'
                 git config --global user.email 'mike.tintes@hotmail.com'
 
