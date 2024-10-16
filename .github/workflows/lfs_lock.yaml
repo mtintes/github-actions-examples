@@ -23,7 +23,7 @@ jobs:
                         git lfs unlock lockfile.lock || echo "No lock to unlock"
                     fi
                     count=$((count+1))
-                    echo "Waiting for lock to be released"
+                    echo "Waiting for lock to be released: $count"
                     sleep 1
                     wait=false
                     git lfs lock lockfile.lock || wait=true
