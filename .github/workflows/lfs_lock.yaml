@@ -19,6 +19,7 @@ jobs:
                 count=0
                 while $wait; do
                     if [[ $count -gt 300 ]]; then
+                        echo "lock timeout"
                         git lfs unlock lockfile.lock || echo "No lock to unlock"
                     fi
                     count=$((count+1))
