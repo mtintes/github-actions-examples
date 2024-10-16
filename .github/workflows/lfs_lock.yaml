@@ -36,6 +36,7 @@ jobs:
                     echo "somefile.json not found"
                 fi
 
+                sleep 60
                 git config --global user.name 'mtintes'
                 git config --global user.email 'mike.tintes@hotmail.com'
 
