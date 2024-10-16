@@ -16,12 +16,16 @@ jobs:
                 wait=false 
                 git lfs install
                 git lfs lock lockfile.lock || wait=true
-
+                count=0
                 while $wait; do
-                   echo "Waiting for lock to be released"
-                   sleep 1
-                   wait=false
-                   git lfs lock lockfile.lock || wait=true
+                    if [[ $count -gt 300 ]]; then
+                        git lfs unlock lockfile.lock || echo "No lock to unlock"
+                    fi
+                    count=$((count+1))
+                    echo "Waiting for lock to be released"
+                    sleep 1
+                    wait=false
+                    git lfs lock lockfile.lock || wait=true
                 done
 
                 echo start ${{ matrix.version }}
@@ -31,13 +35,7 @@ jobs:
                     echo "somefile.json not found"
                 fi
 
-                even = ${{ matrix.version  }} % 2
-                if [[ $even -eq 0 ]]; then
-                    echo "This is version ${{ matrix.version }}"
-                    exit 1
-                fi
-
-                git pull origin main
+                sleep 60
                 git config --global user.name 'mtintes'
                 git config --global user.email 'mike.tintes@hotmail.com'
                 jq -r --arg number "property${{matrix.version}}" --arg random "$RANDOM" '.[$number]=$random' somefile.json > somefile.tmp 
@@ -60,7 +58,4 @@ jobs:
           - name: Unlock
             if: always()
             run: |
-                even = ${{ matrix.version  }} % 2
-                if [[ $even -eq 0 ]]; then
-                    git lfs unlock lockfile.lock
-                fi
+                git lfs unlock lockfile.lock || echo "No lock to unlock"
