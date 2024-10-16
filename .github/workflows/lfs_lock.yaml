@@ -16,7 +16,13 @@ jobs:
                 wait=false 
                 git lfs install
                 git lfs lock lockfile.lock || wait=true
+                count=0
                 while $wait; do
+                    if [ $count -gt 300 ]; then
+                        echo "Timeout waiting for lock"
+                        git lfs unlock lockfile.lock || echo "No lock to unlock"
+                    fi
+                    count=$((count+1))
                     echo "Waiting for lock to be released"
                     sleep 1
                     wait=false
