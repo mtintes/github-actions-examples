@@ -18,7 +18,8 @@ jobs:
                 git lfs install
                 count=0
                 while $wait; do
-                    if [ $count -gt 30+$RANDOM%10 ]; then
+                    maxCount=30+$RANDOM%10
+                    if [ $count -gt $maxCount ]; then
                         echo "Timeout waiting for lock"
                         git lfs unlock lockfile.lock || echo "No lock to unlock"
                         count=0
@@ -28,7 +29,7 @@ jobs:
                     echo "Waiting for lock to be released: $count"
 
                     wait=false
-                    if ${{!env.hasLock }}; then
+                    if [${{!env.hasLock }}]; then
                         git lfs lock lockfile.lock || wait=true
                     fi
 
@@ -69,7 +70,7 @@ jobs:
           - name: Unlock
             if: always()
             run: |
-                if ${{ env.hasLock }}; then
+                if [${{ env.hasLock }}]; then
                     git lfs unlock lockfile.lock || echo "No lock to unlock"
                 fi
                 
