@@ -35,6 +35,8 @@ jobs:
                             echo "hasLock=true" >> $GITHUB_ENV
                             echo "Lock acquired"
                         fi
+                    else
+                        wait=true
                     fi
                 done
 
