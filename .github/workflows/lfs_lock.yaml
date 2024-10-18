@@ -29,7 +29,7 @@ jobs:
                     echo "Waiting for lock to be released: $count"
 
                     wait=false
-                    if !${{env.hasLock }}; then
+                    if ! ${{env.hasLock }}; then
                         git lfs lock lockfile.lock || wait=true
                     fi
 
