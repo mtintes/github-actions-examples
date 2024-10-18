@@ -38,6 +38,7 @@ jobs:
                     else
                         wait=true
                     fi
+                    sleep 1
                 done
 
                 echo start ${{ matrix.version }}
