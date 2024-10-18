@@ -13,6 +13,7 @@ jobs:
         steps:
           - uses: actions/checkout@v4
           - run: |
+                echo "hasLock=false" >> $GITHUB_ENV
                 wait=true
                 git lfs install
                 count=0
