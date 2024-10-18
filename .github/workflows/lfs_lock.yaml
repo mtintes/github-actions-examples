@@ -13,20 +13,28 @@ jobs:
         steps:
           - uses: actions/checkout@v4
           - run: |
-                wait=false 
+                wait=true
                 git lfs install
-                git lfs lock lockfile.lock || wait=true
                 count=0
                 while $wait; do
-                    if [ $count -gt 30 ]; then
+                    if [ $count -gt 30+$RANDOM%10 ]; then
                         echo "Timeout waiting for lock"
                         git lfs unlock lockfile.lock || echo "No lock to unlock"
                         count=0
                     fi
                     count=$((count+1))
+
                     echo "Waiting for lock to be released: $count"
+
                     wait=false
-                    git lfs lock lockfile.lock || wait=true
+                    if ${{!env.hasLock }}; then
+                        git lfs lock lockfile.lock || wait=true
+                    fi
+
+                    if !$wait; then
+                        echo "hasLock=true" >> $GITHUB_ENV
+                        echo "Lock acquired"
+                    fi
                 done
 
                 echo start ${{ matrix.version }}
@@ -60,4 +68,7 @@ jobs:
           - name: Unlock
             if: always()
             run: |
-                git lfs unlock lockfile.lock || echo "No lock to unlock"
+                if ${{ env.hasLock }}; then
+                    git lfs unlock lockfile.lock || echo "No lock to unlock"
+                fi
+                
