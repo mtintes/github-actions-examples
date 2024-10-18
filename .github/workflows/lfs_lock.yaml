@@ -30,6 +30,7 @@ jobs:
 
                     wait=false
                     if ! ${{env.hasLock }}; then
+                        echo "Locking"
                         git lfs lock lockfile.lock || wait=true
                         if ! $wait; then
                             echo "hasLock=true" >> $GITHUB_ENV
