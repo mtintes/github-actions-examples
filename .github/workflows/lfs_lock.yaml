@@ -31,11 +31,10 @@ jobs:
                     wait=false
                     if ! ${{env.hasLock }}; then
                         git lfs lock lockfile.lock || wait=true
-                    fi
-
-                    if ! $wait; then
-                        echo "hasLock=true" >> $GITHUB_ENV
-                        echo "Lock acquired"
+                        if ! $wait; then
+                            echo "hasLock=true" >> $GITHUB_ENV
+                            echo "Lock acquired"
+                        fi
                     fi
                 done
 
