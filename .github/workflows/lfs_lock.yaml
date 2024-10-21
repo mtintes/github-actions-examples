@@ -32,7 +32,7 @@ jobs:
                     git lfs install
                     count=0
                     while $wait; do
-                        maxCount=$((30+$RANDOM%10))
+                        maxCount=$((50+$RANDOM%10))
                         if [ $count -gt $maxCount ]; then
                             echo "Timeout waiting for lock"
                             git lfs unlock lockfile.lock || echo "No lock to unlock"
