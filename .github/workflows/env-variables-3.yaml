@@ -3,9 +3,6 @@ name: env variables 3
 on:
     workflow_dispatch:
 
-env:
-  TEST: "something"
-
 jobs:
     job1:
         runs-on: ubuntu-latest
