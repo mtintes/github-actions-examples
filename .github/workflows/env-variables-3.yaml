@@ -18,6 +18,7 @@ jobs:
                 retry_on: any
                 command: |
                     if [ ! -z "${{ env.TEST }}" ]; then
+                        echo "env test: ${{ env.TEST }}"
                         test=${{ env.TEST }}
                     else
                         test=false
