@@ -9,73 +9,91 @@ jobs:
         runs-on: ubuntu-latest
         strategy:
           matrix: 
-            version: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-        
-        env:
-            hasLock: true
+            version: [1, 2, 3, 4]
 
         steps:
           - uses: actions/checkout@v4
-          - run: |
-                echo "hasLock=false" >> $GITHUB_ENV
-                echo "hasLock: ${{env.hasLock}}"
-                wait=true
-                git lfs install
-                count=0
-                while $wait; do
-                    maxCount=$((30+$RANDOM%10))
-                    if [ $count -gt $maxCount ]; then
-                        echo "Timeout waiting for lock"
-                        git lfs unlock lockfile.lock || echo "No lock to unlock"
-                        count=0
-                    fi
-                    count=$((count+1))
-
-                    echo "Waiting for lock to be released: $count"
-
-                    wait=false
-                    echo hasLock ${{env.hasLock }}
-                    if ! ${{env.hasLock }}; then
-                        echo "Locking"
-                        git lfs lock lockfile.lock || wait=true
-                        if ! $wait; then
-                            echo "hasLock=true" >> $GITHUB_ENV
-                            echo "Lock acquired"
-                        fi
-                    else
-                        wait=true
-                    fi
-                    sleep 1
-                done
-
-                echo start ${{ matrix.version }}
-                if [[ -f somefile.json ]]; then
-                    cat somefile.json
-                else
-                    echo "somefile.json not found"
-                fi
-
-                git config --global user.name 'mtintes'
-                git config --global user.email 'mike.tintes@hotmail.com'
-
-                git pull
-                jq -r --arg number "property${{matrix.version}}" --arg random "$RANDOM" '.[$number]=$random' somefile.json > somefile.tmp 
-                mv somefile.tmp somefile.json
-                # echo "diff-index"
-                # git diff-index --quiet HEAD
-                echo "add"
-                git add somefile.json 
-                echo "commit"
-                git commit -am "Write ${{ matrix.version }}" -m "Wrote ${{ matrix.version }}"
-                echo "fetch"
-                git fetch origin main
-                echo "rebase"
-                git rebase origin/main
-                git push
-
-                echo finish ${{ matrix.version }}
-                cat somefile.json
+          - name: Merge new into manifest
             id: lock-and-commit
+            uses: nick-fields/retry@v2.8.3
+            with:
+                timeout_minutes: 1
+                max_attempts: 3
+                retry_wait_seconds: 20
+                retry_on: any
+                command: |
+                    if [ ! -z "${{env.hasLock}}" ]; then
+                        hasLock=${{env.hasLock}}
+                    else
+                        hasLock=false
+                    fi
+                    echo "hasLock: $hasLock"
+                    wait=true
+                    git lfs install
+                    count=0
+                    while $wait; do
+                        maxCount=$((30+$RANDOM%10))
+                        if [ $count -gt $maxCount ]; then
+                            echo "Timeout waiting for lock"
+                            git lfs unlock lockfile.lock || echo "No lock to unlock"
+                            count=0
+                        fi
+                        count=$((count+1))
+
+                        echo "Waiting for lock to be released: $count"
+
+                        wait=false
+                        echo hasLock $hasLock
+                        if ! $hasLock; then
+                            echo "Locking"
+                            git lfs lock lockfile.lock || wait=true
+                            if ! $wait; then
+                                hasLock=true
+                                echo "hasLock=true" >> $GITHUB_ENV
+                                echo "Lock acquired"
+                            fi
+                        else
+                            wait=true
+                        fi
+                        sleep 1
+                    done
+
+                    echo start ${{ matrix.version }}
+                    if [[ -f somefile.json ]]; then
+                        cat somefile.json
+                    else
+                        echo "somefile.json not found"
+                    fi
+
+                    sleep 30
+                    git pull
+                    jq -r --arg number "property${{matrix.version}}" --arg random "$RANDOM" '.[$number]=$random' somefile.json > somefile.tmp 
+                    mv somefile.tmp somefile.json
+                    # echo "diff-index"
+                    # git diff-index --quiet HEAD
+
+                    echo finish ${{ matrix.version }}
+                    cat somefile.json
+          - name: Commit changes
+            id: commit
+            uses: nick-fields/retry@v2.8.3
+            with:
+                timeout_minutes: 1
+                max_attempts: 3
+                retry_on: any
+                command: |
+                    git config --global user.name 'mtintes'
+                    git config --global user.email 'mike.tintes@hotmail.com'
+                    echo "add"
+                    git add somefile.json 
+                    echo "commit"
+                    git commit -am "Write ${{ matrix.version }}" -m "Wrote ${{ matrix.version }}"
+                    echo "fetch"
+                    git fetch origin main
+                    echo "rebase"
+                    git rebase origin/main
+                    git push
+
           - name: Unlock
             if: always()
             run: |
