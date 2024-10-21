@@ -10,10 +10,12 @@ jobs:
         strategy:
           matrix: 
             version: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+        
         steps:
           - uses: actions/checkout@v4
           - run: |
                 echo "hasLock=false" >> $GITHUB_ENV
+                echo "hasLock: ${{env.hasLock}}"
                 wait=true
                 git lfs install
                 count=0
@@ -29,7 +31,7 @@ jobs:
                     echo "Waiting for lock to be released: $count"
 
                     wait=false
-                    echo lok ${{env.hasLock }}
+                    echo hasLock ${{env.hasLock }}
                     if ! ${{env.hasLock }}; then
                         echo "Locking"
                         git lfs lock lockfile.lock || wait=true
