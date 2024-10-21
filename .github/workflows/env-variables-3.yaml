@@ -17,6 +17,7 @@ jobs:
                 retry_wait_seconds: 20
                 retry_on: any
                 command: |
+                    echo "test: $test"
                     if [ ! -z "${{ env.TEST }}" ]; then
                         echo "env test: ${{ env.TEST }}"
                         test=${{ env.TEST }}
@@ -25,4 +26,5 @@ jobs:
                     fi
                     echo "test: $test"
                     echo "TEST=true" >> $GITHUB_ENV
+                    test=true
                     exit 1
