@@ -20,7 +20,7 @@ jobs:
                 retry_wait_seconds: 20
                 retry_on: any
                 command: |
-                    if [ ! -z ${{ env.TEST }} ]; then
+                    if [ ! -z "${{ env.TEST }}" ]; then
                         test=${{ env.TEST }}
                     else
                         test=false
