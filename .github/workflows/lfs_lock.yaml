@@ -45,17 +45,15 @@ jobs:
                         wait=false
                         echo hasLock $hasLock
                         if ! $hasLock; then
-                            echo "Locking"
+                            echo "attempt Locking"
                             git lfs lock lockfile.lock || wait=true
                             if ! $wait; then
                                 hasLock=true
                                 echo "hasLock=true" >> $GITHUB_ENV
                                 echo "Lock acquired"
                             fi
-                        else
-                            wait=true
+                            sleep 1
                         fi
-                        sleep 1
                     done
 
                     echo start ${{ matrix.version }}
@@ -97,7 +95,9 @@ jobs:
           - name: Unlock
             if: always()
             run: |
+                echo "lock status ${{ env.hasLock }}"
                 if ${{ env.hasLock }}; then
                     git lfs unlock lockfile.lock || echo "No lock to unlock"
+                    echo "hasLock=false" >> $GITHUB_ENV
                 fi
                 
