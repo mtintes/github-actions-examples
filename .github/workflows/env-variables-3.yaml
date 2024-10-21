@@ -15,7 +15,7 @@ jobs:
               id: lock-and-commit
               uses: nick-fields/retry@v2.8.3
               with:
-                timeout_minutes: .5
+                timeout_seconds: 30
                 max_attempts: 3
                 retry_wait_seconds: 20
                 retry_on: any
