@@ -10,7 +10,7 @@ jobs:
             exit_code: ${{ steps.do_something.outputs.failure_message }}
         steps:
             - uses: actions/checkout@v4
-            - id: "do_something"
+            - id: 'do_something'
               run: |
                 go version
                 cd goapp
@@ -22,7 +22,7 @@ jobs:
                 set -e
                 echo result $result
                 echo code $?
-                echo do something else
+                echo "do something else"
                 echo "failure_message=do_something" >> $GITHUB_OUTPUT
                 
             - run: |
