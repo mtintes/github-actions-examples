@@ -1,4 +1,4 @@
-name: actionlint
+name: lint
 run-name: Action Lint
 on:
   push:
@@ -15,8 +15,6 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-        with:
-          ref: ${{ github.ref }}
       - name: Set up Go 1.x
         uses: actions/setup-go@v5
         with:
