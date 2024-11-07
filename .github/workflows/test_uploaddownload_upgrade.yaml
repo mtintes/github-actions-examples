@@ -22,7 +22,7 @@ jobs:
             cd somestuff-${{ matrix.version }}
             touch test-${{ matrix.version }}
         
-        - uses: actions/upload-artifact@v3
+        - uses: actions/upload-artifact@v4
           with:
             name: my-artifact
             path: root/**/somestuff-${{ matrix.version }}
@@ -36,7 +36,7 @@ jobs:
         steps:
         - run: echo "success"
         
-        - uses: actions/download-artifact@v3
+        - uses: actions/download-artifact@v4
           with:
             name: my-artifact
             path: right-here
