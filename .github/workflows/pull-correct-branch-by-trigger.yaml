@@ -1,0 +1,26 @@
+name: actionlint
+run-name: Action Lint
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/**
+  pull_request:
+    types: [opened, synchronize, edited]
+    paths:
+      - .github/**
+
+jobs:
+  actionlint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Set up Go 1.x
+        uses: actions/setup-go@v5
+        with:
+          go-version: 1.19
+      - name: install actionlint
+        run: go install github.com/rhysd/actionlint/cmd/actionlint@latest
+      - name: actionlint
+        run: |
+          actionlint -color
