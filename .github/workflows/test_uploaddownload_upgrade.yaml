@@ -1,0 +1,46 @@
+name: upload/download upgrade test
+
+on:
+    workflow_dispatch:
+        
+jobs:       
+    matrix-job:
+        name: runs
+        runs-on: ubuntu-latest
+        strategy:
+            matrix: 
+                version: [1, 2, 3]    
+        steps:
+        - run: |
+            mkdir root
+            cd root
+            mkdir somestuffIdontwant
+            cd somestuffIdontwant
+            touch bad-file
+            cd ..
+            mkdir somestuff-${{ matrix.version }}
+            cd somestuff-${{ matrix.version }}
+            touch test-${{ matrix.version }}
+        
+        - uses: actions/upload-artifact@v3
+          with:
+            name: my-artifact
+            path: root/**/somestuff-${{ matrix.version }}
+            retention-days: 1
+            
+    dependency-job:
+        name: wait for matrix jobs
+        runs-on: ubuntu-latest
+        needs: matrix-job
+        if: ${{ !failure() }}
+        steps:
+        - run: echo "success"
+        
+        - uses: actions/download-artifact@v3
+          with:
+            name: my-artifact
+            path: right-here
+            
+        - name: Display structure of downloaded files
+          run: ls -R
+          working-directory: right-here
