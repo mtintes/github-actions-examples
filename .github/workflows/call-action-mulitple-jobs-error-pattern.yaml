@@ -15,7 +15,7 @@ jobs:
       errorStep: ${{ steps.action_id.outputs.error_step || steps.step-1.outputs.error_step || ''}}
       errorStepMessage: ${{ steps.action_id.outputs.error_step_message || steps.step-1.outputs.error_step_message || ''}}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - name: step 1
         id: step-1
         run: |  

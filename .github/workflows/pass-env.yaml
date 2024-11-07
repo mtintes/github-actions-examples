@@ -11,7 +11,7 @@ jobs:
       pass_this: ${{ steps.set-env.outputs.somevar }}
       check_bool: ${{ steps.set-bool.outputs.env_bool }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - id: set-env
         run: |
           env_var="HI"  

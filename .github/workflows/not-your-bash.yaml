@@ -10,7 +10,7 @@ jobs:
             CUSTOMER: "customer1"
             ENVIRONMENT: "dev"
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v4
             - run: |
                 if [[ $CUSTOMER = 'customer2' ]] || [[ $CUSTOMER = 'customer1' && $ENVIRONMENT = 'dev' ]]; then
                      echo three

@@ -8,7 +8,7 @@ jobs:
     name: Call Action
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v4
       - id: action_id
         uses: mtintes/github-action-global/.github/actions/return-action@main
         with:

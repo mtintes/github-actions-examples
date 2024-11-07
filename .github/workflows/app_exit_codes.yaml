@@ -7,10 +7,10 @@ jobs:
     job1:
         runs-on: ubuntu-latest
         outputs:
-            exit_code: ${{ steps.set_exit_code.outputs.failure_message }}
+            exit_code: ${{ steps.do_something.outputs.failure_message }}
         steps:
-            - uses: actions/checkout@v2
-            - id: do_something
+            - uses: actions/checkout@v4
+            - id: "do_something"
               run: |
                 go version
                 cd goapp

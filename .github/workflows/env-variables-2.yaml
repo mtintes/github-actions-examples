@@ -9,7 +9,7 @@ jobs:
     job1:
         runs-on: ubuntu-latest
         steps:
-            - uses: actions/checkout@v2
+            - uses: actions/checkout@v4
             - run: |
                 echo ${{env.SOME_VALUE}}
             - run: |
