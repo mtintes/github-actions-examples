@@ -12,7 +12,7 @@ jobs:
           reason_codes=$(jq --null-input '[ "ARGO_HEALTH_CHECK" ]')
           reason_codes=$(jq -rc '. | unique' <<< $reason_codes)
           echo $reason_codes
-          echo "testOutputValue=$reason_codes" >> $GITHUB_OUTPUT
+          echo -e "testOutputValue=$reason_codes" >> $GITHUB_OUTPUT
       - name: output
         run: |
           echo -e ${{ steps.value.outputs.testOutputValue }}
