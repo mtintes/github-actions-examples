@@ -10,7 +10,7 @@ jobs:
         id: value
         run: |
           reason_codes=$(jq --null-input '[ "ARGO_HEALTH_CHECK" ]')
-          reason_codes=$(jq '. | unique' <<< $reason_codes)
+          reason_codes=$(jq -c '. | unique' <<< $reason_codes)
           echo $reason_codes
           echo "testOutputValue=$reason_codes" >> $GITHUB_OUTPUT
       - name: output
