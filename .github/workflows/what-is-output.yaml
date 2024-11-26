@@ -9,7 +9,8 @@ jobs:
       - name: Do something
         id: value
         run: |
-          testValue=[ "Test" ]
+          reason_codes=$(jq -c --null-input '["ARGO_HEALTH_CHECK"]')
+          reason_codes=$(jq -c '. | unique' <<< $reason_codes)
           echo $testValue
           echo "testOutputValue=$testValue" >> $GITHUB_OUTPUT
       - name: output
