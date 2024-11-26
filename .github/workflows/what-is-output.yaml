@@ -9,7 +9,7 @@ jobs:
       - name: Do something
         id: value
         run: |
-          testValue="[ \"Test\" ]"
+          testValue=[ "Test" ]
           echo $testValue
           echo "testOutputValue=$testValue" >> $GITHUB_OUTPUT
       - name: output
