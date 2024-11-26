@@ -15,4 +15,4 @@ jobs:
           echo -e "testOutputValue=$reason_codes" >> $GITHUB_OUTPUT
       - name: output
         run: |
-          echo -e ${{ steps.value.outputs.testOutputValue }}
+          printf ${{ steps.value.outputs.testOutputValue }}
