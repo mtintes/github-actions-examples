@@ -1,0 +1,12 @@
+name: what is output
+
+on: workflow_dispatch
+
+jobs:
+  do-something:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Do something
+        run: |
+          testValue="[ \"Test\" ]"
+          echo "testOutputValue=$testValue" >> $GITHUB_OUTPUT
