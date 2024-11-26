@@ -13,6 +13,8 @@ jobs:
           reason_codes=$(jq -rc '. | unique' <<< $reason_codes)
           echo $reason_codes
           echo "testOutputValue='$reason_codes'" >> $GITHUB_OUTPUT
+          echo "newtest=[\"TEST\"]" >> $GITHUB_OUTPUT
       - name: output
         run: |
           echo ${{ steps.value.outputs.testOutputValue }}
+          echo ${{ steps.value.outputs.newtest}}
