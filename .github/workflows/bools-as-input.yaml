@@ -18,4 +18,4 @@ jobs:
     steps:
       - name: test
         run: |
-          echo "Thing: *${FIX_OPERATION_IN_PROGRESS}"
+          echo "Thing: *${FIX_OPERATION_IN_PROGRESS}*"
