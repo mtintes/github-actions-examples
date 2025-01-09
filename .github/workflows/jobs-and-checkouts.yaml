@@ -15,8 +15,8 @@ jobs:
           git add somefile.txt
           git config --global user.name 'test'
           git config --global user.email 'email@users.noreply.github.com'
-          git fetch origin main
-          git rebase origin main
+          git fetch 
+          git rebase
           git push
       - run: git rev-parse HEAD
           
