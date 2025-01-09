@@ -5,11 +5,21 @@ on:
       
 jobs:
   job1:
-    name: checkout stuff
+    name: checkout and update a thing
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - run: git rev-parse HEAD
+      - run: |
+          echo ${{ github.run_id }} > somefile.txt
+          git add somefile.txt
+          git config --global user.name 'test'
+          git config --global user.email 'email@users.noreply.github.com'
+          git fetch origin main
+          git rebase origin main
+          git push
+      - run: git rev-parse HEAD
+          
   job2:
     name: dont checkout
     runs-on: ubuntu-latest
