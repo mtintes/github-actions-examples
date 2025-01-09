@@ -28,4 +28,6 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: git rev-parse HEAD
+      - run: git pull
+      - run: git rev-parse HEAD
       
