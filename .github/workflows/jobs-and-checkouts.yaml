@@ -14,5 +14,6 @@ jobs:
     name: dont checkout
     runs-on: ubuntu-latest
     steps:
+      - uses: actions/checkout@v4
       - run: git rev-parse HEAD
       
