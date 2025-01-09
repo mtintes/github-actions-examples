@@ -10,6 +10,7 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: git rev-parse HEAD
+      - run: cat somefile.txt
       - run: |
           echo ${{ github.run_id }} > somefile.txt
           git add somefile.txt
@@ -20,14 +21,18 @@ jobs:
           git fetch 
           git rebase
           git push
+          
       - run: git rev-parse HEAD
+      - run: cat somefile.txt
           
   job2:
     name: dont checkout
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - run: cat somefile.txt
       - run: git rev-parse HEAD
       - run: git pull
+      - run: cat somefile.txt
       - run: git rev-parse HEAD
       
