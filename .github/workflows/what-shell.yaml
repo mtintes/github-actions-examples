@@ -1,4 +1,4 @@
-name: App Exit Code Handling
+name: What shell?
 
 on:
     workflow_dispatch:
