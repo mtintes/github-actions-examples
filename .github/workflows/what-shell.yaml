@@ -7,7 +7,7 @@ jobs:
     job1:
         runs-on: ubuntu-latest
         steps:
-            - id: 'shell version'
+            - name: 'shell version'
               run: |
                 echo $SHELL
                 $SHELL --version
