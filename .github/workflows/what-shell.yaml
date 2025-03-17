@@ -1,0 +1,14 @@
+name: App Exit Code Handling
+
+on:
+    workflow_dispatch:
+    
+jobs:
+    job1:
+        runs-on: ubuntu-latest
+        steps:
+            - id: 'shell version'
+              run: |
+                echo $SHELL
+                $SHELL --version
+                
