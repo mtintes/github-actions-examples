@@ -14,6 +14,7 @@ jobs:
         uses: ./.github/actions/return-action
         with:
           test_property: "some test value"
+          extra_property: "test"
       - run: echo some output ${{ steps.action_id.outputs.return_info }}
           
       
