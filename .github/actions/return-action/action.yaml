@@ -3,6 +3,86 @@ name: 'return-action'
 inputs:
   test_property:
     required: false
+  more_prop1:
+    required: false
+  more_prop2:
+    required: false
+  more_prop3:
+    required: false
+  more_prop4:
+    required: false
+  more_prop5:
+    required: false
+  more_prop6:
+    required: false
+  more_prop7:
+    required: false
+  more_prop8:
+    required: false
+  more_prop9:
+    required: false
+  more_prop10:
+    required: false
+  more_prop11:
+    required: false
+  more_prop12:
+    required: false
+  more_prop13:
+    required: false
+  more_prop14:
+    required: false
+  more_prop15:
+    required: false
+  more_prop16:
+    required: false
+  more_prop17:
+    required: false
+  more_prop18:
+    required: false
+  more_prop19:
+    required: false
+  more_prop20:
+    required: false
+  more_prop1-:
+    required: false
+  more_prop2-:
+    required: false
+  more_prop3-:
+    required: false
+  more_prop4-:
+    required: false
+  more_prop5-:
+    required: false
+  more_prop6-:
+    required: false
+  more_prop7-:
+    required: false
+  more_prop8-:
+    required: false
+  more_prop9-:
+    required: false
+  more_prop10-:
+    required: false
+  more_prop11-:
+    required: false
+  more_prop12-:
+    required: false
+  more_prop13-:
+    required: false
+  more_prop14-:
+    required: false
+  more_prop15-:
+    required: false
+  more_prop16-:
+    required: false
+  more_prop17-:
+    required: false
+  more_prop18-:
+    required: false
+  more_prop19-:
+    required: false
+  more_prop20-:
+    required: false
     
 outputs:
     return_info: 
