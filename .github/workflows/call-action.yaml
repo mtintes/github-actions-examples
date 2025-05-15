@@ -14,6 +14,15 @@ jobs:
         uses: ./.github/actions/return-action
         with:
           test_property: "some test value"
+          more_prop1: |-
+            - name: hb-cnsmr-mstry-tw-v1
+              version: 13bce4
+              sonarqube: https://sonarqube.mastery.net/dashboard?id=masterysystems_release-train-simple-image
+              github: https://github.com/masterysystems/release-train-simple-image
+            - name: other
+              version: v2.14
+              sonarqube: https://sonarqube.mastery.net/dashboard?id=other
+              github: https://github.com/masterysystems/stuff
       - run: echo some output ${{ steps.action_id.outputs.return_info }}
           
       
