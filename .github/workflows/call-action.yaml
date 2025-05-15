@@ -15,14 +15,14 @@ jobs:
         with:
           test_property: "some test value"
           more_prop1: |-
-            - name: hb-cnsmr-mstry-tw-v1
+            - name: sfsdfsdfsd
               version: 13bce4
-              sonarqube: https://sonarqube.mastery.net/dashboard?id=masterysystems_release-train-simple-image
-              github: https://github.com/masterysystems/release-train-simple-image
+              sonarqube: https://sfsdfsdfsd
+              github: https://sdfsdfdsfds
             - name: other
               version: v2.14
-              sonarqube: https://sonarqube.mastery.net/dashboard?id=other
-              github: https://github.com/masterysystems/stuff
+              sonarqube: https://sfsdfsdfsfsdf
+              github: https://sdfdsf
       - run: echo some output ${{ steps.action_id.outputs.return_info }}
           
       
