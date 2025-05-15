@@ -99,7 +99,7 @@ runs:
       id: return_info
       run: |
         
-        echo '${{ inputs.more_prop1 }}'
+        echo '${{ inputs.more_prop1 }}' | yq .[].name 
         echo "set output"
         echo "action_fruit=Apple" >> $GITHUB_OUTPUT
 
