@@ -15,5 +15,4 @@ jobs:
       - uses: actions/checkout@v4
       - run: |
           echo ${{ fromJson( inputs.test-json ) }}
-          COMPONENTDATA=${{ fromJson( inputs.test-json ) }}
           COMPNAMES=$(jq -r '.components[].name' <<< $COMPONENTDATA)
