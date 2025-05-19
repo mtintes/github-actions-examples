@@ -16,4 +16,4 @@ jobs:
       - run: |
           echo ${{ fromJson( inputs.test-json ) }}
           COMPONENTDATA=${{ fromJson( inputs.test-json ) }}
-          COMPNAMES=$(jq -r '.components[].name' <<< "$COMPONENTDATA")
+          COMPNAMES=$(jq -r '.components[].name' <<< $COMPONENTDATA)
