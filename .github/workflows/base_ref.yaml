@@ -9,4 +9,4 @@ jobs:
         steps:
             - uses: actions/checkout@v4
             - run: |
-                echo ${{ github.ref }}
+                echo ${{ github.ref_name }}
