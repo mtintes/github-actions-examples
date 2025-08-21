@@ -14,6 +14,6 @@ runs:
       id: return_info
       run: |
         
-        echo '${{ inputs.test_property }}'
+        echo '${{ inputs.test_property }}' | yq .[].name
 
 
