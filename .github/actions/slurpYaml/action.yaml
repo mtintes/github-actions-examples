@@ -1,0 +1,19 @@
+name: 'slurpYaml'
+description: 'Action to return a property from a YAML input'
+
+inputs:
+  test_property:
+    required: true
+    description: "input yaml"
+
+      
+runs:
+  using: "composite"
+  steps:
+    - shell: bash
+      id: return_info
+      run: |
+        
+        echo '${{ inputs.test_property }}'
+
+

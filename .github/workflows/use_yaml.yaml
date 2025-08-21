@@ -1,0 +1,25 @@
+name: Use Yaml
+
+on:
+  workflow_dispatch:
+      
+jobs:
+  start:
+    name: Call Action
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - id: action_id
+        uses: ./.github/actions/slurpYaml
+        with:
+          test_property: |-
+            - name: sfsdfsdfsd
+              version: 13bce4
+              sonarqube: https://sfsdfsdfsd
+              github: https://sdfsdfdsfds
+            - name: other
+              version: v2.14
+              sonarqube: https://sfsdfsdfsfsdf
+              github: https://sdfdsf
+
+          
