@@ -1,0 +1,25 @@
+name: json between jobs
+
+on:
+  workflow_dispatch:
+      
+jobs:
+  job1:
+    name: json-thing
+    runs-on: ubuntu-latest
+    outputs:
+      had_issue: ${{ steps.set-bool.outputs.env_bool }}
+    steps:
+      - id: set-bool
+        run: |
+            SOME_JSON={"something":"somethingValue","other":"otherValue"}
+            echo "env_bool=$SOME_JSON" >> $GITHUB_OUTPUT
+
+  job2:
+    name: fail with error
+    runs-on: ubuntu-latest
+    needs: job1
+    steps:
+      - id: set-bool
+        run: |
+          echo  ${{ needs.job1.outputs.had_issue }}
