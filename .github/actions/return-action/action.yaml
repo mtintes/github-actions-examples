@@ -3,86 +3,6 @@ name: 'return-action'
 inputs:
   test_property:
     required: false
-  more_prop1:
-    required: false
-  more_prop2:
-    required: false
-  more_prop3:
-    required: false
-  more_prop4:
-    required: false
-  more_prop5:
-    required: false
-  more_prop6:
-    required: false
-  more_prop7:
-    required: false
-  more_prop8:
-    required: false
-  more_prop9:
-    required: false
-  more_prop10:
-    required: false
-  more_prop11:
-    required: false
-  more_prop12:
-    required: false
-  more_prop13:
-    required: false
-  more_prop14:
-    required: false
-  more_prop15:
-    required: false
-  more_prop16:
-    required: false
-  more_prop17:
-    required: false
-  more_prop18:
-    required: false
-  more_prop19:
-    required: false
-  more_prop20:
-    required: false
-  more_prop1-a:
-    required: false
-  more_prop2-a:
-    required: false
-  more_prop3-a:
-    required: false
-  more_prop4-a:
-    required: false
-  more_prop5-a:
-    required: false
-  more_prop6-a:
-    required: false
-  more_prop7-a:
-    required: false
-  more_prop8-a:
-    required: false
-  more_prop9-a:
-    required: false
-  more_prop10-a:
-    required: false
-  more_prop11-a:
-    required: false
-  more_prop12-a:
-    required: false
-  more_prop13-a:
-    required: false
-  more_prop14-a:
-    required: false
-  more_prop15-a:
-    required: false
-  more_prop16-a:
-    required: false
-  more_prop17-a:
-    required: false
-  more_prop18-a:
-    required: false
-  more_prop19-a:
-    required: false
-  more_prop20-a:
-    required: false
     
 outputs:
     return_info: 
@@ -98,7 +18,7 @@ runs:
     - shell: bash
       id: return_info
       run: |
-        
+        echo "${{ github.event.repository.html_url }}/actions/runs/${{ github.run_id }}"
         echo '${{ inputs.more_prop1 }}' | yq .[].name 
         echo "set output"
         echo "action_fruit=Apple" >> $GITHUB_OUTPUT
