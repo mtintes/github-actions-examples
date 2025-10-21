@@ -23,7 +23,8 @@ jobs:
               version: v2.14
               sonarqube: https://sfsdfsdfsfsdf
               github: https://sdfdsf
-      - run: echo some output ${{ steps.action_id.outputs.return_info }}
-          
+      - run: |
+          echo some output ${{ steps.action_id.outputs.return_info }}
+          echo "link: ${{ github.event.repository.html_url }}/actions/runs/${{ github.run_id }}"
       
     
