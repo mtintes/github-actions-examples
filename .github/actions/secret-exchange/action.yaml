@@ -1,12 +1,12 @@
 
 name: 'experiment'
-       
+inputs:
+  some_secret:
+    description: 'a secret to test with'
+    required: false
+
 runs:
   using: "composite"
-  inputs:
-    some_secret:
-      description: 'a secret to test with'
-      required: false
   steps:
     - shell: bash
       id: return_info
