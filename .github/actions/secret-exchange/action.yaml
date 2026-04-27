@@ -1,0 +1,15 @@
+
+name: 'experiment'
+       
+runs:
+  using: "composite"
+  inputs:
+    some_secret:
+      description: 'a secret to test with'
+      required: false
+  steps:
+    - shell: bash
+      id: return_info
+      run: |
+        echo "test natural secret: ${{ secrets.SOME_REAL_SECRET }}"
+        echo "test input secret: ${{ inputs.some_secret }}"
