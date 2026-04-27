@@ -11,5 +11,7 @@ runs:
     - shell: bash
       id: return_info
       run: |
+        #it don't work
         echo "test natural secret: ${{ secrets.SOME_REAL_SECRET }}"
+        #but this one does.
         echo "test input secret: ${{ inputs.some_secret }}"
